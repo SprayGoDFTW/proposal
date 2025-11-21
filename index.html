@@ -1,71 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
-            padding: 0;
             height: 100vh;
-            background: url("cutypie.jpeg") center/cover no-repeat fixed;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: "Poppins", sans-serif;
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
         }
-
         .box {
-            background: rgba(0,0,0,0.5);
-            padding: 20px 30px;
-            border-radius: 12px;
             text-align: center;
-            color: white;
-            width: 80%;
-            max-width: 350px;
         }
-
         input {
-            width: 90%;
             padding: 10px;
+            font-size: 18px;
             border-radius: 8px;
             border: none;
-            margin-bottom: 12px;
+            outline: none;
         }
-
         button {
-            width: 100%;
-            padding: 10px;
-            background: #4e8cff;
-            color: white;
-            border: none;
+            padding: 10px 18px;
+            font-size: 18px;
             border-radius: 8px;
+            border: none;
+            margin-left: 5px;
             cursor: pointer;
-            font-size: 16px;
         }
     </style>
 </head>
 <body>
+    <div class="box">
+        <h2>Enter Password</h2>
+        <input id="pass" type="password" placeholder="Password">
+        <button onclick="unlock()">Unlock</button>
+    </div>
 
-<div class="box">
-    <h2>Enter Password</h2>
-    <input type="password" id="pass" placeholder="Password...">
-    <button onclick="unlock()">Unlock</button>
-    <p id="err" style="color: pink; margin-top:10px;"></p>
-</div>
-
-<script>
-    function unlock() {
-        let p = document.getElementById("pass").value;
-
-        if (p === "mycupcakebaby") {
-            window.location.href = "main.html";
-        } else {
-            document.getElementById("err").innerText = "Wrong password!";
+    <script>
+        function unlock() {
+            const password = document.getElementById("pass").value;
+            if (password === "mycupcakebaby") {
+                window.location.href = "main.html";
+            } else {
+                alert("Wrong password!");
+            }
         }
-    }
-</script>
-
+    </script>
+</body>
+</html>
 </body>
 </html>
