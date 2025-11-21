@@ -1,130 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>For My Love Only</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  :root{--accent:#4a8cff;--btn:#ff4fa2}
-  html,body{height:100%;margin:0}
-  body{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Poppins',sans-serif;
-    background: url("https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/pookie.jpeg") center/cover no-repeat fixed;
-    background-color:#000;
-  }
-  .card{
-    width:90%;max-width:420px;
-    background:rgba(0,0,0,0.55);
-    padding:28px;border-radius:14px;
-    text-align:center;color:#eaf4ff;
-    box-shadow:0 8px 30px rgba(0,0,0,0.6);
-    backdrop-filter: blur(6px);
-  }
-  h1{
-    margin:0 0 18px 0;
-    font-family:'Great Vibes',cursive;
-    font-size:2.6rem;color:#cfe7ff;
-    text-shadow:0 0 14px rgba(74,140,255,0.9);
-  }
-  #passcode{
-    width:86%;max-width:320px;padding:12px 14px;border-radius:10px;border:2px solid rgba(255,255,255,0.12);
-    background:rgba(255,255,255,0.08);color:#fff;font-size:16px;text-align:center;outline:none;
-    box-shadow:0 0 10px rgba(74,140,255,0.18) inset;
-  }
-  #unlockBtn{
-    margin-top:14px;padding:12px 26px;border-radius:10px;border:none;background:var(--btn);
-    color:white;font-size:16px;cursor:pointer;box-shadow:0 6px 20px rgba(255,79,162,0.18);
-  }
-  #unlockBtn:active{transform:scale(.995)}
-  #msg{margin-top:12px;color:#ffdede;min-height:22px}
-  @media (max-width:420px){
-    h1{font-size:2.1rem}
-    #passcode{font-size:15px}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love Only</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url("pookie2.jpeg") no-repeat center center/cover;
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Great Vibes", cursive;
+            font-size: 42px;
+            color: #fff;
+            text-shadow: 0px 0px 8px #00aaff;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: none;
+            width: 230px;
+            font-size: 17px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            background: #ff4fa3;
+            color: white;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff2f92;
+        }
+    </style>
 </head>
+
 <body>
+    <h1>For My Love Only</h1>
 
-<div class="card" role="main" aria-label="passcode card">
-  <h1>For My Love Only</h1>
+    <input type="password" id="passcode" placeholder="Enter Passcode...">
+    <button onclick="unlock()">Unlock</button>
 
-  <input id="passcode" name="passcode" type="text" autocomplete="off" placeholder="Enter passcode…" aria-label="passcode field">
-  <div>
-    <button id="unlockBtn" type="button">Unlock</button>
-  </div>
+    <script>
+        function unlock() {
+            let code = document.getElementById("passcode").value.trim();
 
-  <div id="msg" aria-live="polite"></div>
-</div>
-
-<script>
-/*
-  Robust unlock script:
-  - trims whitespace
-  - case-insensitive
-  - shows messages on page
-  - cache-proof redirect
-*/
-
-(function(){
-  const CORRECT = "mycupcakebaby";
-  const input = document.getElementById("passcode");
-  const btn = document.getElementById("unlockBtn");
-  const msg = document.getElementById("msg");
-
-  function show(text, color = "#ffdede"){
-    msg.textContent = text;
-    msg.style.color = color;
-  }
-
-  function unlockAction(){
-    const valRaw = input.value || "";
-    const val = valRaw.trim().toLowerCase();
-
-    console.log("[unlock] entered:", JSON.stringify(valRaw), "normalized:", JSON.stringify(val));
-
-    if(!val){
-      show("Please type the passcode.", "#ffdede");
-      return;
-    }
-
-    if(val === CORRECT.toLowerCase()){
-      show("Passcode correct — opening your page...", "#caffea");
-      // redirect with cache-buster so GitHub Pages loads fresh
-      const target = "main.html?v=" + Date.now();
-      setTimeout(()=> { window.location.href = target; }, 450);
-    } else {
-      show("Wrong passcode, my love 🥺", "#ffc6c6");
-      // small shake effect (pure css-like via inline)
-      const card = document.querySelector('.card');
-      card.style.transition = "transform 0.12s ease";
-      card.style.transform = "translateX(-6px)";
-      setTimeout(()=> { card.style.transform = "translateX(6px)"; }, 120);
-      setTimeout(()=> { card.style.transform = ""; }, 260);
-      console.warn("[unlock] incorrect passcode:", val);
-    }
-  }
-
-  // press Enter to submit
-  input.addEventListener("keydown", function(e){
-    if(e.key === "Enter") unlockAction();
-  });
-
-  btn.addEventListener("click", unlockAction);
-
-  // safety: auto-lowercase placeholder while typing (optional)
-  input.addEventListener("input", function(){ /* keep as is */ });
-
-  // focus on load
-  window.setTimeout(()=> input.focus(), 300);
-
-  // helpful note in console
-  console.log("Unlock script loaded. Use passcode:", CORRECT);
-})();
-</script>
-
+            if (code === "mycupcakebaby") {
+                window.location.href = "https://spraygodftw.github.io/proposal/main.html";
+            } else {
+                alert("Wrong passcode, my love 🥺");
+            }
+        }
+    </script>
 </body>
 </html>
