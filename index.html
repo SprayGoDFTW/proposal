@@ -1,274 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>For You ❤️</title>
-
-  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For You ❤️</title>  <style>
     @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
-    /* Basic page */
-    body{
-      margin:0;
-      padding:0;
+    body {
+      margin: 0;
+      padding: 0;
       background-image: url("https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/e40bab66a8c1ea47cba6c6b8127f6b80.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      font-family:"Great Vibes", cursive;
-      color:#fff;
-      text-shadow:0 0 8px rgba(0,0,0,0.7);
-      overflow-x:hidden;
-      cursor:none; /* we use custom heart cursor */
+      font-family: "Great Vibes", cursive;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+      overflow-x: hidden;
     }
 
-    .container{
-      max-width:750px;
-      margin:auto;
-      padding:40px 20px;
-      margin-top:60px;
+    /* ---------------------- LOCK SCREEN ---------------------- */
+    #lockscreen {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      transition: opacity 0.8s ease;
     }
 
-    h1{ text-align:center; font-size:2.2rem; color:#ffb3d9; margin-bottom:20px; }
-    p{ font-size:1.2rem; line-height:1.5; text-align:center; }
-
-    audio{ display:block; margin:30px auto; }
-
-    .divider{ text-align:center; font-size:2rem; margin:40px 0; }
-
-    .photos-section{ margin-top:40px; text-align:center; }
-    .photos-section h2{ font-size:2rem; color:#ffb3d9; margin-bottom:25px; }
-
-    .photos-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-      gap:20px;
-      padding:0 20px;
+    #lock-title {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      color: white;
+      letter-spacing: 1px;
+      text-align: center;
     }
 
-    .photos-grid img{
-      width:100%;
-      border-radius:18px;
-      box-shadow:0 0 12px rgba(0,0,0,0.45);
-      display:block;
-      position:relative;
-      overflow:visible;
+    .passcode-dots {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
     }
 
-    /* sparkle pseudo element */
-    .photos-grid .sparkle-wrap{ position:relative; }
-    .photos-grid .sparkle{ position:absolute; top:-8px; right:-8px; font-size:1.3rem; pointer-events:none; animation:sparkle 2200ms infinite ease-in-out; }
-    @keyframes sparkle {
-      0%{ transform:scale(1); opacity:1; }
-      50%{ transform:scale(1.35); opacity:0.7; }
-      100%{ transform:scale(1); opacity:1; }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid white;
+      transition: 0.3s;
     }
 
-    /* Floating hearts */
-    .hearts-container{ position:fixed; inset:0; pointer-events:none; z-index:2; }
-    .heart{ position:absolute; bottom:0; animation:floatUp 6s linear infinite; opacity:0.85; font-size:1.4rem; }
-    @keyframes floatUp {
-      0%{ transform:translateY(0) rotate(0deg); opacity:0; }
-      10%{ opacity:1; }
-      100%{ transform:translateY(-110vh) rotate(25deg); opacity:0; }
+    /* keypad */
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 80px);
+      gap: 18px;
+      justify-content: center;
     }
 
-    /* Cursor heart */
-    .cursor-heart{ position:fixed; width:28px; height:28px; pointer-events:none; background:#ff7bbf; border-radius:50%; box-shadow:0 0 18px #ff7bbf; transform:translate(-50%,-50%); z-index:9999; }
+    .key {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: white;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+      user-select: none;
+      transition: 0.2s;
+    }
 
-    /* -------------------------
-       FADE-IN / REVEAL (robust)
-       ------------------------- */
-    .fade-element{ opacity:0; transform:translateY(28px); transition:opacity 900ms cubic-bezier(.2,.9,.3,1), transform 900ms cubic-bezier(.2,.9,.3,1); }
-    .fade-visible{ opacity:1; transform:translateY(0); }
+    .key:active {
+      transform: scale(0.9);
+      background: rgba(255,255,255,0.25);
+    }
 
-    /* Photo-specific reveal with scale slightly */
-    .photo { transform: translateY(28px) scale(0.98); transition: transform 800ms cubic-bezier(.2,.9,.3,1), opacity 800ms ease; opacity:0; }
-    .photo.fade-visible { opacity:1; transform: translateY(0) scale(1); }
+    /* shake wrong */
+    .shake {
+      animation: shake 0.4s linear;
+    }
 
-    /* stagger helper — inline style will override but provide default */
-    .photo[data-delay="1"]{ transition-delay: 120ms; }
-    .photo[data-delay="2"]{ transition-delay: 240ms; }
-    .photo[data-delay="3"]{ transition-delay: 360ms; }
-    .photo[data-delay="4"]{ transition-delay: 480ms; }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-12px); }
+      40% { transform: translateX(12px); }
+      60% { transform: translateX(-12px); }
+      80% { transform: translateX(12px); }
+      100% { transform: translateX(0); }
+    }
 
-    /* fallback if JS disabled — show everything */
-    noscript .fade-element, noscript .photo{ opacity:1 !important; transform:none !important; }
-  </style>
-</head>
-<body>
+    /* ---------------------- CONTENT ---------------------- */
+    .container {
+      max-width: 750px;
+      margin: auto;
+      padding: 40px 20px;
+      margin-top: 60px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
 
-  <!-- custom cursor -->
-  <div class="cursor-heart" id="cursorHeart"></div>
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffb3d9;
+    }
 
-  <script>
-    // Heart cursor movement
-    (function(){
-      const cur = document.getElementById('cursorHeart');
-      document.addEventListener('mousemove', e => {
-        // use requestAnimationFrame for smoother following
-        window.requestAnimationFrame(()=> {
-          cur.style.left = (e.clientX) + 'px';
-          cur.style.top  = (e.clientY) + 'px';
-        });
-      });
-    })();
-  </script>
+    p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      text-align: center;
+    }
 
-  <div class="container fade-element">
-    <h1>Hey... I Made This For You ❤️</h1>
+    /* Typewriter */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #ffb3d9;
+      animation: typing 4s steps(40), blink .7s infinite;
+    }
 
-    <p>
-      Hey babe, I just wanna confess something which I kept for months. I'm in love with you babe.
-      You always make my days brighter and make my heart a little faster.
-    </p>
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
 
-    <p>
-      So I made this small place on the internet just for you babe. I'll be there for you till I die.
-    </p>
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
 
-    <p>
-      You said don't ask “will you be my girlfriend,” so nope I'm not gonna ask that. <br>
-      <strong>Will you be the love of my life?</strong><br>
-      I'm in love with you sooo madly.
-    </p>
+    /* Divider */
+    .divider {
+      text-align: center;
+      font-size: 2rem;
+      margin: 40px 0;
+    }
 
-    <p>I love you babyyyyyyy. Muah my sweet little cupcake ❤️</p>
+    /* Photos section */
+    .photos-section h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #ffb3d9;
+      margin-bottom: 20px;
+    }
 
-    <audio controls autoplay>
-      <source src="romantic-song.mp3" type="audio/mpeg" />
-    </audio>
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .photos-grid img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.45);
+    }
+
+    /* Slideshow */
+    .slideshow {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .slide-img {
+      width: 85%;
+      border-radius: 18px;
+      box-shadow: 0 0 16px rgba(0,0,0,0.5);
+      animation: fadeSlide 1s ease;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+  </style></head><body>  <!-- LOCKSCREEN -->  <div id="lockscreen">
+    <div id="lock-title">For My Love Only ❤️</div><div class="passcode-dots" id="dots">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<div class="keypad">
+  <div class="key">1</div>
+  <div class="key">2</div>
+  <div class="key">3</div>
+  <div class="key">4</div>
+  <div class="key">5</div>
+  <div class="key">6</div>
+  <div class="key">7</div>
+  <div class="key">8</div>
+  <div class="key">9</div>
+  <div></div>
+  <div class="key">0</div>
+  <div></div>
+</div>
+
+  </div>  <!-- MAIN CONTENT -->  <div class="container" id="mainContent" style="opacity:0;">
+    <h1>Hey... I Made This For You ❤️</h1><p class="typewriter">Hey babe, I just wanna confess something which I kept for months...</p>
+
+<p class="typewriter">You always make my days brighter and make my heart a little faster.</p>
+
+<p class="typewriter">So I made this small place on the internet just for you babe...</p>
+
+<p class="typewriter"><strong>Will you be the love of my life?</strong> I'm in love with you sooo madly.</p>
+
+<p class="typewriter">I love you babyyyyyyy. Muah my sweet little cupcake ❤️</p>
+
+<audio controls autoplay>
+  <source src="romantic-song.mp3" type="audio/mpeg" />
+</audio>
+
+<div class="divider">🐾🐾🐾</div>
+
+<div class="photos-section">
+  <h2>Cutiepie Things Which You Love 💖</h2>
+
+  <div class="photos-grid">
+    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg" />
+    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg" />
+    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg" />
+    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg" />
   </div>
+</div>
 
-  <div class="divider fade-element">🐾🐾🐾</div>
+<div class="slideshow">
+  <h2>More Cute Moments 💞</h2>
+  <img id="slide" class="slide-img" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/e40bab66a8c1ea47cba6c6b8127f6b80.jpg" />
+</div>
 
-  <div class="photos-section fade-element">
-    <h2>Cutiepie Things Which You Love 💖</h2>
+  </div>  <!-- SCRIPT -->  <script>
+    const correctCode = "mycupcakebaby";
+    let inputCode = "";
+    const dots = document.querySelectorAll(".dot");
+    const lockscreen = document.getElementById("lockscreen");
+    const mainContent = document.getElementById("mainContent");
 
-    <div class="photos-grid">
-      <div class="sparkle-wrap">
-        <img class="photo" data-delay="1" loading="lazy"
-             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg"
-             alt="puppy 1">
-        <div class="sparkle">✨</div>
-      </div>
+    document.querySelectorAll(".key").forEach(key => {
+      key.addEventListener("click", () => {
+        const val = key.textContent;
+        inputCode += val;
 
-      <div class="sparkle-wrap">
-        <img class="photo" data-delay="2" loading="lazy"
-             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg"
-             alt="puppy 2">
-        <div class="sparkle">✨</div>
-      </div>
+        if (dots[inputCode.length - 1]) dots[inputCode.length - 1].style.background = "white";
 
-      <div class="sparkle-wrap">
-        <img class="photo" data-delay="3" loading="lazy"
-             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg"
-             alt="puppy 3">
-        <div class="sparkle">✨</div>
-      </div>
-
-      <div class="sparkle-wrap">
-        <img class="photo" data-delay="4" loading="lazy"
-             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg"
-             alt="puppy 4">
-        <div class="sparkle">✨</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- floating hearts container -->
-  <div class="hearts-container" id="heartsContainer"></div>
-
-  <noscript>
-    <style>
-      .fade-element, .photo { opacity:1 !important; transform:none !important; }
-      .cursor-heart { display:none; }
-    </style>
-  </noscript>
-
-  <script>
-    // Robust reveal + fallback
-    (function(){
-      const fadeElements = Array.from(document.querySelectorAll('.fade-element'));
-      const photos = Array.from(document.querySelectorAll('.photo'));
-
-      // Helper: check if element is in viewport (fallback)
-      function isInViewport(el, offset = 0.15){ // offset fraction of viewport height
-        const rect = el.getBoundingClientRect();
-        const vh = (window.innerHeight || document.documentElement.clientHeight);
-        return (rect.top <= vh * (1 - offset));
-      }
-
-      // IntersectionObserver setup if supported
-      let obsSupported = 'IntersectionObserver' in window;
-      if(obsSupported){
-        const io = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if(entry.isIntersecting){
-              entry.target.classList.add('fade-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.18 });
-
-        // Observe all fade-elements and photos
-        fadeElements.forEach(el => io.observe(el));
-        photos.forEach((p, i) => io.observe(p));
-      } else {
-        // Fallback: on load/scroll, add visible class when in viewport
-        const checkAll = () => {
-          fadeElements.forEach(el => { if(isInViewport(el)) el.classList.add('fade-visible'); });
-          photos.forEach(p => { if(isInViewport(p)) p.classList.add('fade-visible'); });
-        };
-        window.addEventListener('scroll', checkAll);
-        window.addEventListener('resize', checkAll);
-        window.addEventListener('load', checkAll);
-        // initial
-        checkAll();
-      }
-
-      // Extra: if observer didn't reveal photos because they were already visible on load,
-      // ensure they get revealed after load with stagger.
-      function revealStaggered(){
-        photos.forEach((img, idx) => {
-          if(img.classList.contains('fade-visible')) return; // already visible
-          if(isInViewport(img, 0.35)){
-            // stagger by data-delay or index
-            const delay = (img.dataset.delay ? parseInt(img.dataset.delay,10) : (idx+1)) * 120;
-            setTimeout(()=> img.classList.add('fade-visible'), delay);
+        if (inputCode.length === correctCode.length) {
+          if (inputCode === correctCode) {
+            lockscreen.style.opacity = "0";
+            setTimeout(() => lockscreen.style.display = "none", 900);
+            setTimeout(() => mainContent.style.opacity = "1", 200);
+          } else {
+            lockscreen.classList.add("shake");
+            setTimeout(() => lockscreen.classList.remove("shake"), 500);
+            dots.forEach(dot => dot.style.background = "transparent");
+            inputCode = "";
           }
-        });
-      }
-
-      // run after everything loads to catch images that were in viewport from the start
-      window.addEventListener('load', () => {
-        // small timeout to allow layout to settle
-        setTimeout(() => {
-          fadeElements.forEach(el => { if(isInViewport(el,0.25)) el.classList.add('fade-visible'); });
-          revealStaggered();
-        }, 120);
+        }
       });
-    })();
+    });
 
+    /* Slideshow */
+    const slides = [
+      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg",
+      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg",
+      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg",
+      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg"
+    ];
 
-    // Floating hearts (keeps working)
-    (function(){
-      const container = document.getElementById('heartsContainer');
-      function spawnHeart(){
-        const el = document.createElement('div');
-        el.className = 'heart';
-        el.innerText = '❤️';
-        el.style.left = Math.random() * window.innerWidth + 'px';
-        el.style.fontSize = (12 + Math.random() * 28) + 'px';
-        el.style.animationDuration = (4 + Math.random() * 5) + 's';
-        el.style.opacity = (0.6 + Math.random()*0.4);
-        container.appendChild(el);
-        setTimeout(()=> el.remove(), 9000);
-      }
-      setInterval(spawnHeart, 600);
-    })();
-  </script>
-</body>
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      const slide = document.getElementById("slide");
+      slide.src = slides[idx];
+      slide.style.animation = "none";
+      void slide.offsetWidth;
+      slide.style.animation = "fadeSlide 1s ease";
+    }, 3500);
+  </script></body>
 </html>
