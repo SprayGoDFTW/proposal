@@ -1,195 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>For You ❤️</title>
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
-    body {
-      margin: 0;
-      padding: 0;
+    /* Basic page */
+    body{
+      margin:0;
+      padding:0;
       background-image: url("https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/e40bab66a8c1ea47cba6c6b8127f6b80.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      font-family: "Great Vibes", cursive;
-      color: #ffffff;
-      text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
-      cursor: none;
-      overflow-x: hidden;
+      font-family:"Great Vibes", cursive;
+      color:#fff;
+      text-shadow:0 0 8px rgba(0,0,0,0.7);
+      overflow-x:hidden;
+      cursor:none; /* we use custom heart cursor */
     }
 
-    .cursor-heart {
-      position: fixed;
-      width: 25px;
-      height: 25px;
-      pointer-events: none;
-      background: #ff7bbf;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #ff7bbf;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
+    .container{
+      max-width:750px;
+      margin:auto;
+      padding:40px 20px;
+      margin-top:60px;
     }
 
-    .container {
-      max-width: 750px;
-      margin: auto;
-      padding: 40px 20px;
-      margin-top: 60px;
+    h1{ text-align:center; font-size:2.2rem; color:#ffb3d9; margin-bottom:20px; }
+    p{ font-size:1.2rem; line-height:1.5; text-align:center; }
+
+    audio{ display:block; margin:30px auto; }
+
+    .divider{ text-align:center; font-size:2rem; margin:40px 0; }
+
+    .photos-section{ margin-top:40px; text-align:center; }
+    .photos-section h2{ font-size:2rem; color:#ffb3d9; margin-bottom:25px; }
+
+    .photos-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:20px;
+      padding:0 20px;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 2.2rem;
-      color: #ffb3d9;
-      margin-bottom: 20px;
+    .photos-grid img{
+      width:100%;
+      border-radius:18px;
+      box-shadow:0 0 12px rgba(0,0,0,0.45);
+      display:block;
+      position:relative;
+      overflow:visible;
     }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    audio {
-      display: block;
-      margin: 30px auto;
-    }
-
-    .divider {
-      text-align: center;
-      font-size: 2rem;
-      margin: 40px 0;
-    }
-
-    .photos-section {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .photos-section h2 {
-      font-size: 2rem;
-      color: #ffb3d9;
-      margin-bottom: 25px;
-    }
-
-    .photos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
-
-    .photos-grid img {
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-      position: relative;
-    }
-
-    .photos-grid img::after {
-      content: "✨";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      animation: sparkle 2s infinite ease-in-out;
-      font-size: 1.5rem;
-    }
-
+    /* sparkle pseudo element */
+    .photos-grid .sparkle-wrap{ position:relative; }
+    .photos-grid .sparkle{ position:absolute; top:-8px; right:-8px; font-size:1.3rem; pointer-events:none; animation:sparkle 2200ms infinite ease-in-out; }
     @keyframes sparkle {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Fade / scroll animations */
-    .fade-element {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-    }
-    .fade-visible {
-      opacity: 1;
-      transform: translateY(0);
+      0%{ transform:scale(1); opacity:1; }
+      50%{ transform:scale(1.35); opacity:0.7; }
+      100%{ transform:scale(1); opacity:1; }
     }
 
     /* Floating hearts */
-    .hearts-container {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .heart {
-      position: absolute;
-      bottom: 0;
-      animation: floatUp 6s infinite ease-in-out;
-      opacity: 0.7;
-      font-size: 1.4rem;
-      color: #ffb3d9;
-    }
+    .hearts-container{ position:fixed; inset:0; pointer-events:none; z-index:2; }
+    .heart{ position:absolute; bottom:0; animation:floatUp 6s linear infinite; opacity:0.85; font-size:1.4rem; }
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(20px);
-        opacity: 0;
-      }
+      0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+      10%{ opacity:1; }
+      100%{ transform:translateY(-110vh) rotate(25deg); opacity:0; }
     }
+
+    /* Cursor heart */
+    .cursor-heart{ position:fixed; width:28px; height:28px; pointer-events:none; background:#ff7bbf; border-radius:50%; box-shadow:0 0 18px #ff7bbf; transform:translate(-50%,-50%); z-index:9999; }
+
+    /* -------------------------
+       FADE-IN / REVEAL (robust)
+       ------------------------- */
+    .fade-element{ opacity:0; transform:translateY(28px); transition:opacity 900ms cubic-bezier(.2,.9,.3,1), transform 900ms cubic-bezier(.2,.9,.3,1); }
+    .fade-visible{ opacity:1; transform:translateY(0); }
+
+    /* Photo-specific reveal with scale slightly */
+    .photo { transform: translateY(28px) scale(0.98); transition: transform 800ms cubic-bezier(.2,.9,.3,1), opacity 800ms ease; opacity:0; }
+    .photo.fade-visible { opacity:1; transform: translateY(0) scale(1); }
+
+    /* stagger helper — inline style will override but provide default */
+    .photo[data-delay="1"]{ transition-delay: 120ms; }
+    .photo[data-delay="2"]{ transition-delay: 240ms; }
+    .photo[data-delay="3"]{ transition-delay: 360ms; }
+    .photo[data-delay="4"]{ transition-delay: 480ms; }
+
+    /* fallback if JS disabled — show everything */
+    noscript .fade-element, noscript .photo{ opacity:1 !important; transform:none !important; }
   </style>
 </head>
-
 <body>
 
-  <!-- Heart cursor -->
+  <!-- custom cursor -->
   <div class="cursor-heart" id="cursorHeart"></div>
 
   <script>
-    document.addEventListener("mousemove", function (e) {
-      let cursor = document.getElementById("cursorHeart");
-      cursor.style.left = e.pageX + "px";
-      cursor.style.top = e.pageY + "px";
-    });
+    // Heart cursor movement
+    (function(){
+      const cur = document.getElementById('cursorHeart');
+      document.addEventListener('mousemove', e => {
+        // use requestAnimationFrame for smoother following
+        window.requestAnimationFrame(()=> {
+          cur.style.left = (e.clientX) + 'px';
+          cur.style.top  = (e.clientY) + 'px';
+        });
+      });
+    })();
   </script>
 
   <div class="container fade-element">
     <h1>Hey... I Made This For You ❤️</h1>
 
     <p>
-      Hey babe, I just wanna confess something which I kept for months. I'm in
-      love with you babe. You always make my days brighter and make my heart a
-      little faster.
+      Hey babe, I just wanna confess something which I kept for months. I'm in love with you babe.
+      You always make my days brighter and make my heart a little faster.
     </p>
 
     <p>
-      So I made this small place on the internet just for you babe. I'll be
-      there for you till I die.
+      So I made this small place on the internet just for you babe. I'll be there for you till I die.
     </p>
 
     <p>
-      You said don't ask “will you be my girlfriend,” so nope I'm not gonna ask
-      that.  
-      <br /><strong>Will you be the love of my life?</strong>
-      <br />
+      You said don't ask “will you be my girlfriend,” so nope I'm not gonna ask that. <br>
+      <strong>Will you be the love of my life?</strong><br>
       I'm in love with you sooo madly.
     </p>
 
-    <p>
-      I love you babyyyyyyy.  
-      Muah my sweet little cupcake ❤️
-    </p>
+    <p>I love you babyyyyyyy. Muah my sweet little cupcake ❤️</p>
 
     <audio controls autoplay>
       <source src="romantic-song.mp3" type="audio/mpeg" />
@@ -202,40 +148,127 @@
     <h2>Cutiepie Things Which You Love 💖</h2>
 
     <div class="photos-grid">
-      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg">
-      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg">
-      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg">
-      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg">
+      <div class="sparkle-wrap">
+        <img class="photo" data-delay="1" loading="lazy"
+             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg"
+             alt="puppy 1">
+        <div class="sparkle">✨</div>
+      </div>
+
+      <div class="sparkle-wrap">
+        <img class="photo" data-delay="2" loading="lazy"
+             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg"
+             alt="puppy 2">
+        <div class="sparkle">✨</div>
+      </div>
+
+      <div class="sparkle-wrap">
+        <img class="photo" data-delay="3" loading="lazy"
+             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg"
+             alt="puppy 3">
+        <div class="sparkle">✨</div>
+      </div>
+
+      <div class="sparkle-wrap">
+        <img class="photo" data-delay="4" loading="lazy"
+             src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg"
+             alt="puppy 4">
+        <div class="sparkle">✨</div>
+      </div>
     </div>
   </div>
 
-  <!-- Floating Hearts -->
+  <!-- floating hearts container -->
   <div class="hearts-container" id="heartsContainer"></div>
 
+  <noscript>
+    <style>
+      .fade-element, .photo { opacity:1 !important; transform:none !important; }
+      .cursor-heart { display:none; }
+    </style>
+  </noscript>
+
   <script>
-    // Floating hearts
-    function spawnHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
-      document.getElementById("heartsContainer").appendChild(heart);
-      setTimeout(() => { heart.remove(); }, 8000);
-    }
-    setInterval(spawnHeart, 600);
+    // Robust reveal + fallback
+    (function(){
+      const fadeElements = Array.from(document.querySelectorAll('.fade-element'));
+      const photos = Array.from(document.querySelectorAll('.photo'));
 
-    // REAL fade animation
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("fade-visible");
-        }
+      // Helper: check if element is in viewport (fallback)
+      function isInViewport(el, offset = 0.15){ // offset fraction of viewport height
+        const rect = el.getBoundingClientRect();
+        const vh = (window.innerHeight || document.documentElement.clientHeight);
+        return (rect.top <= vh * (1 - offset));
+      }
+
+      // IntersectionObserver setup if supported
+      let obsSupported = 'IntersectionObserver' in window;
+      if(obsSupported){
+        const io = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){
+              entry.target.classList.add('fade-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18 });
+
+        // Observe all fade-elements and photos
+        fadeElements.forEach(el => io.observe(el));
+        photos.forEach((p, i) => io.observe(p));
+      } else {
+        // Fallback: on load/scroll, add visible class when in viewport
+        const checkAll = () => {
+          fadeElements.forEach(el => { if(isInViewport(el)) el.classList.add('fade-visible'); });
+          photos.forEach(p => { if(isInViewport(p)) p.classList.add('fade-visible'); });
+        };
+        window.addEventListener('scroll', checkAll);
+        window.addEventListener('resize', checkAll);
+        window.addEventListener('load', checkAll);
+        // initial
+        checkAll();
+      }
+
+      // Extra: if observer didn't reveal photos because they were already visible on load,
+      // ensure they get revealed after load with stagger.
+      function revealStaggered(){
+        photos.forEach((img, idx) => {
+          if(img.classList.contains('fade-visible')) return; // already visible
+          if(isInViewport(img, 0.35)){
+            // stagger by data-delay or index
+            const delay = (img.dataset.delay ? parseInt(img.dataset.delay,10) : (idx+1)) * 120;
+            setTimeout(()=> img.classList.add('fade-visible'), delay);
+          }
+        });
+      }
+
+      // run after everything loads to catch images that were in viewport from the start
+      window.addEventListener('load', () => {
+        // small timeout to allow layout to settle
+        setTimeout(() => {
+          fadeElements.forEach(el => { if(isInViewport(el,0.25)) el.classList.add('fade-visible'); });
+          revealStaggered();
+        }, 120);
       });
-    }, { threshold: 0.2 });
+    })();
 
-    document.querySelectorAll('.fade-element').forEach(el => observer.observe(el));
+
+    // Floating hearts (keeps working)
+    (function(){
+      const container = document.getElementById('heartsContainer');
+      function spawnHeart(){
+        const el = document.createElement('div');
+        el.className = 'heart';
+        el.innerText = '❤️';
+        el.style.left = Math.random() * window.innerWidth + 'px';
+        el.style.fontSize = (12 + Math.random() * 28) + 'px';
+        el.style.animationDuration = (4 + Math.random() * 5) + 's';
+        el.style.opacity = (0.6 + Math.random()*0.4);
+        container.appendChild(el);
+        setTimeout(()=> el.remove(), 9000);
+      }
+      setInterval(spawnHeart, 600);
+    })();
   </script>
-
 </body>
 </html>
