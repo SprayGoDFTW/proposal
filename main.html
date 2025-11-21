@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
 
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        font-family: "Poppins", sans-serif;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    /* Main container */
+    .content {
+        max-width: 900px;
+        margin: auto;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    /* Typewriter heading */
+    .typewriter {
+        font-size: 2rem;
+        margin-top: 40px;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid white;
+        width: 0;
+        animation: typing 3s steps(40) forwards, blink 0.6s infinite;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    /* Paragraph fade-in */
+    .para {
+        opacity: 0;
+        animation: fadeIn 2s ease forwards;
+        animation-delay: 3.3s;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    /* Cute pictures grid */
+    .cute-section {
+        margin-top: 60px;
+    }
+
+    .cute-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-shadow: 0 0 15px #5ab8ff;
+    }
+
+    .pic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .pic-grid img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 15px;
+        opacity: 0;
+        animation: fadeInUp 1.5s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+</head>
+<body>
+
+<div class="content">
+
+    <!-- Typewriter -->
+    <div class="typewriter">
+        For my one and only love ❤️
+    </div>
+
+    <!-- Paragraph -->
+    <p class="para">
+        You mean everything to me.  
+        Every smile, every moment, every tiny piece of you is something I adore.  
+        This little page is just for you — created with love, care, and all my heart. 💙  
+    </p>
+
+    <!-- Cute Section -->
+    <div class="cute-section">
+        <div class="cute-title">Cutiepie Things You Love 💕</div>
+
+        <div class="pic-grid">
+            <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/pookie.jpeg">
+            <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/dog%20aproveitando%20o%20sol.jpeg">
+            <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/cutypie.jpeg">
+            <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
