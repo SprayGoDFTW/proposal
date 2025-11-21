@@ -1,91 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cutiepie Things You Love</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Disable password suggestions -->
+    <meta name="autocomplete" content="off">
+    <meta name="password-manager" content="disable">
+
+    <title>Cutiepie Things 💕</title>
 
     <style>
         body {
             margin: 0;
             padding: 0;
-
-            /* Background settings */
-            background-image: url("bg.jpg"); /* <-- replace with your image */
-            background-size: contain; /* NOT zoomed */
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-attachment: fixed;
-            background-color: #000; /* fallback */
-            font-family: "Poppins", sans-serif;
+            background: black;
             color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
-        }
-
-        .container {
-            padding: 20px;
-            margin-top: 60px;
-            backdrop-filter: blur(2px);
         }
 
         h1 {
             font-size: 40px;
-            margin-top: 80px;
-            font-weight: 600;
-            color: #ffb6e6;
-            text-shadow: 0 0 10px rgba(255, 143, 219, 0.7);
+            margin-top: 20px;
+            color: #ff9ae6;
+            text-shadow: 0 0 15px #ff5edb;
         }
 
-        .text {
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.7;
-            font-size: 18px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.45);
-            border-radius: 15px;
+        p {
+            font-size: 22px;
+            margin: 25px;
+            line-height: 1.5;
         }
 
-        .dog-gallery {
-            display: flex;
-            gap: 15px;
+        .container {
+            margin-top: 20px;
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(2, 150px);
             justify-content: center;
-            margin-top: 40px;
-            flex-wrap: wrap;
         }
 
-        .dog-gallery img {
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
+        .box {
+            width: 150px;
+            height: 150px;
+            background: #111;
             border-radius: 20px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 20px #ff71c6;
+            overflow: hidden;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
-
 <body>
 
+    <p>I’m in love with you so madly, it drives me crazy.<br>
+    I love you babyyy. Muah my sweet little cupcake.</p>
+
+    <h1>Cutiepie Things You Love 💕</h1>
+
     <div class="container">
-        <div class="text">
-            <p>
-                make my heart go a little faster. So I made this small place on the internet just for you. 
-                I felt like doing something that makes you happy. No need to overthink— I'll be there for you till I die.
-                You said “don’t ask will you be my girlfriend” so nope I’m not asking that.
-                I’m asking… <b>Will you be the love of my life?</b>
-                I’m in love with you so madly, it drives me crazy.
-                I love you babyyy. Muah my sweet little cupcake.
-            </p>
-        </div>
-
-        <h1>Cutiepie Things You Love 💕</h1>
-
-        <div class="dog-gallery">
-            <img src="dog1.jpg" alt="">
-            <img src="dog2.jpg" alt="">
-            <img src="dog3.jpg" alt="">
-            <img src="dog4.jpg" alt="">
-        </div>
+        <div class="box"><img src="dog1.jpeg"></div>
+        <div class="box"><img src="dog2.jpeg"></div>
+        <div class="box"><img src="dog3.jpeg"></div>
+        <div class="box"><img src="dog4.jpeg"></div>
     </div>
 
 </body>
