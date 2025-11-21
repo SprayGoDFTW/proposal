@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love Only</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
@@ -14,67 +13,137 @@
         padding: 0;
         height: 100vh;
         width: 100vw;
-        background-image: url("pookie.jpeg");
+        overflow: hidden;
+
+        background-image: url("pookie2.jpeg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        backdrop-filter: brightness(0.8);
+        position: relative;
+    }
+
+    /* Soft overlay */
+    .overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.25);
+        backdrop-filter: blur(1px);
+        z-index: 1;
+    }
+
+    /* Floating particles */
+    .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: rgba(0, 140, 255, 0.8);
+        border-radius: 50%;
+        animation: float 6s infinite ease-in-out;
+        filter: blur(1px);
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0.7; }
+        50% { transform: translateY(-70px) scale(1.4); opacity: 1; }
+        100% { transform: translateY(0) scale(1); opacity: 0.6; }
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
         text-align: center;
+        animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
         font-family: "Great Vibes", cursive;
         font-size: 55px;
-        color: #ffffff;
-        text-shadow: 0 0 10px rgba(0, 140, 255, 0.8), 
-                     0 0 20px rgba(0, 140, 255, 0.7);
-        margin-bottom: 10px;
+        margin-bottom: 25px;
+        color: white;
+        text-shadow: 
+            0 0 12px rgba(0, 136, 255, 0.8),
+            0 0 25px rgba(0, 136, 255, 0.7);
+        animation: glow 3s ease-in-out infinite alternate;
     }
 
-    .heart {
-        font-size: 55px;
-        text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
-        margin-bottom: 25px;
+    @keyframes glow {
+        0% { text-shadow: 0 0 10px #008cff; }
+        100% { text-shadow: 0 0 22px #008cff; }
     }
 
     .input-box {
-        width: 80%;
-        max-width: 300px;
+        width: 250px;
         padding: 15px;
-        font-size: 18px;
         border-radius: 12px;
         border: none;
         outline: none;
-        font-family: "Poppins", sans-serif;
+        margin-bottom: 20px;
         text-align: center;
+        font-size: 18px;
+        font-family: "Poppins", sans-serif;
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(2px);
+        animation: inputGlow 2s infinite alternate;
+    }
+
+    @keyframes inputGlow {
+        0% { box-shadow: 0 0 8px rgba(0, 136, 255, 0.4); }
+        100% { box-shadow: 0 0 16px rgba(0, 136, 255, 0.8); }
     }
 
     .btn {
-        margin-top: 20px;
-        background: #ff4e8a;
-        padding: 12px 45px;
+        padding: 12px 50px;
         border-radius: 12px;
         border: none;
+        background: #ff4e8a;
         color: white;
         font-size: 20px;
         font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
     }
 </style>
-
 </head>
+
 <body>
 
-<h1>For My Love Only</h1>
-<div class="heart">❤️</div>
+<div class="overlay"></div>
 
-<input type="text" class="input-box" placeholder="Enter Passcode…">
+<!-- Floating particles -->
+<script>
+    for (let i = 0; i < 18; i++) {
+        let p = document.createElement("div");
+        p.classList.add("particle");
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.top = Math.random() * 100 + "vh";
+        p.style.animationDuration = 4 + Math.random() * 4 + "s";
+        p.style.animationDelay = Math.random() * 3 + "s";
+        document.body.appendChild(p);
+    }
+</script>
 
-<button class="btn">Unlock</button>
+<div class="content">
+    <h1>For My Love Only</h1>
+
+    <input type="text" class="input-box" placeholder="Enter Passcode…">
+    <button class="btn">Unlock</button>
+</div>
 
 </body>
 </html>
