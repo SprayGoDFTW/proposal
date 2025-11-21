@@ -26,7 +26,6 @@
         position: relative;
     }
 
-    /* Soft overlay */
     .overlay {
         position: absolute;
         top: 0; left: 0;
@@ -36,7 +35,6 @@
         z-index: 1;
     }
 
-    /* Floating particles */
     .particle {
         position: absolute;
         width: 6px;
@@ -125,7 +123,6 @@
 
 <div class="overlay"></div>
 
-<!-- Floating particles -->
 <script>
     for (let i = 0; i < 18; i++) {
         let p = document.createElement("div");
@@ -141,9 +138,20 @@
 <div class="content">
     <h1>For My Love Only</h1>
 
-    <input type="text" class="input-box" placeholder="Enter Passcode…">
-    <button class="btn">Unlock</button>
+    <input id="passcode" type="text" class="input-box" placeholder="Enter Passcode…">
+    <button class="btn" onclick="unlock()">Unlock</button>
 </div>
+
+<script>
+function unlock() {
+    let code = document.getElementById("passcode").value;
+    if (code === "mycupcakebaby") {
+        window.location.href = "main.html";
+    } else {
+        alert("Wrong passcode, my love 🥺");
+    }
+}
+</script>
 
 </body>
 </html>
