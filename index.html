@@ -3,72 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love Only</title>
-
+    <title>Unlock</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
+            background: url("cutypie.jpeg") center/cover no-repeat fixed;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: url("pookie2.jpeg") no-repeat center center/cover;
             font-family: "Poppins", sans-serif;
-            text-align: center;
         }
 
-        h1 {
-            font-family: "Great Vibes", cursive;
-            font-size: 42px;
-            color: #fff;
-            text-shadow: 0px 0px 8px #00aaff;
-            margin-bottom: 20px;
+        .box {
+            background: rgba(0,0,0,0.5);
+            padding: 20px 30px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            width: 80%;
+            max-width: 350px;
         }
 
         input {
-            padding: 12px 18px;
-            border-radius: 12px;
+            width: 90%;
+            padding: 10px;
+            border-radius: 8px;
             border: none;
-            width: 230px;
-            font-size: 17px;
-            outline: none;
             margin-bottom: 12px;
         }
 
         button {
-            padding: 12px 25px;
-            border: none;
-            background: #ff4fa3;
+            width: 100%;
+            padding: 10px;
+            background: #4e8cff;
             color: white;
-            border-radius: 12px;
-            font-size: 17px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-        }
-
-        button:hover {
-            background: #ff2f92;
+            font-size: 16px;
         }
     </style>
 </head>
-
 <body>
-    <h1>For My Love Only</h1>
 
-    <input type="password" id="passcode" placeholder="Enter Passcode...">
+<div class="box">
+    <h2>Enter Password</h2>
+    <input type="password" id="pass" placeholder="Password...">
     <button onclick="unlock()">Unlock</button>
+    <p id="err" style="color: pink; margin-top:10px;"></p>
+</div>
 
-    <script>
-        function unlock() {
-            let code = document.getElementById("passcode").value.trim();
+<script>
+    function unlock() {
+        let p = document.getElementById("pass").value;
 
-            if (code === "mycupcakebaby") {
-                window.location.href = "https://spraygodftw.github.io/proposal/main.html";
-            } else {
-                alert("Wrong passcode, my love 🥺");
-            }
+        if (p === "mycupcakebaby") {
+            window.location.href = "main.html";
+        } else {
+            document.getElementById("err").innerText = "Wrong password!";
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
