@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #ffeef3;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ff4f7a;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+    .photos img {
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    audio {
+      margin-top: 20px;
+    }
+    /* Floating hearts animation */
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      color: #ff4f7a;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hey... I Made This For You ❤️</h1>
+    <p>
+      I just wanted to tell you something special. You’ve been making my days brighter,
+      my smiles wider, and my heart a little faster. So I made this small place on the
+      internet just for you.
+    </p>
+    <p>
+      I don’t know what the future holds, but I know one thing — I’d love to share it
+      with you. Will you be mine? 💕
+    </p>
+
+    <div class="photos">
+      <!-- Add your cute photos here -->
+      <img src="photo1.jpg" alt="Cute Photo 1" />
+      <img src="photo2.jpg" alt="Cute Photo 2" />
+    </div>
+
+    <audio controls autoplay>
+      <source src="romantic-song.mp3" type="audio/mpeg" />
+      Your browser does not support the audio tag.
+    </audio>
+  </div>
+  <!-- Floating hearts -->
+  <script>
+    const heartCount = 12;
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
