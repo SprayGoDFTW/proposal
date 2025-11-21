@@ -9,15 +9,15 @@
         body {
             margin: 0;
             padding: 0;
-            background: url('https://i.ibb.co/4j0pqYz/galaxy.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 100vh;
+            align-items: center;
+
+            background: url("sunset.jpeg") no-repeat center center/cover;
+            backdrop-filter: blur(2px);
+            font-family: Arial, sans-serif;
         }
 
         h1 {
@@ -35,7 +35,6 @@
             outline: none;
             font-size: 18px;
             margin-bottom: 20px;
-            text-align: center;
         }
 
         button {
@@ -48,29 +47,23 @@
             cursor: pointer;
             box-shadow: 0 0 15px #ff5edb;
         }
-
-        button:hover {
-            opacity: 0.85;
-        }
     </style>
 </head>
 <body>
 
     <h1>Enter Password 💕</h1>
 
-    <!-- Autofill ko remove kiya -->
-    <input autocomplete="off" type="password" id="pass" placeholder="Password">
-
+    <input type="password" id="pass" placeholder="Password" autocomplete="off">
     <button onclick="checkPass()">Enter</button>
 
     <script>
         function checkPass() {
             let p = document.getElementById("pass").value.trim();
 
-            if (p.toLowerCase() === "cupcake") {
+            if (p === "cupcake") { 
                 window.location.href = "main.html";
             } else {
-                alert("Wrong password baby 😘");
+                alert("Wrong password babyyy 😘");
             }
         }
     </script>
