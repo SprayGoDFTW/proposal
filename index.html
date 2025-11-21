@@ -5,73 +5,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<!-- Romantic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
-    background: url('sunsetbg.jpg') no-repeat center/cover;
-}
-
-.lock-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(0px);
-}
-
-.title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 55px;
-    color: #fff;
-    text-shadow: 0 0 20px #ff8fb1;
-    margin-bottom: 20px;
-}
-
-input {
-    padding: 12px 20px;
-    font-size: 20px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-}
-
-button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: none;
-    background: #ff4d6d;
-    color: white;
-    font-size: 18px;
-}
-</style>
-
-<script>
-function unlock() {
-    let p = document.getElementById("pass").value;
-    if (p === "mycupcakebaby") {
-        window.location.href = "main.html";
-    } else {
-        alert("Wrong password babe 🥺");
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: url('sunsetbg.jpg') no-repeat center center/cover;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        text-align: center;
+        animation: fadeIn 1.5s ease-in-out;
     }
-}
-</script>
 
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 60px;
+        color: #ffb6d9;
+        text-shadow: 0 0 15px rgba(255, 182, 219, 0.7);
+        margin-bottom: 10px;
+    }
+
+    .heart {
+        font-size: 60px;
+        margin-bottom: 30px;
+        animation: pop 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(1); }
+    }
+
+    input {
+        padding: 12px;
+        width: 70%;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px 30px;
+        background-color: #ff4f7a;
+        border: none;
+        color: white;
+        font-size: 20px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        background-color: #ff2d61;
+    }
+</style>
 </head>
+
 <body>
 
-<div class="lock-container">
-    <div class="title">For My Love ❤️</div>
+    <h1>For My Love</h1>
+    <div class="heart">❤️</div>
 
-    <input id="pass" type="password" placeholder="Enter Password">
+    <input type="password" id="pass" placeholder="Enter Password">
     <button onclick="unlock()">Unlock</button>
-</div>
+
+    <script>
+        function unlock() {
+            const p = document.getElementById("pass").value;
+            if (p === "mycupcakebaby") {  
+                window.location.href = "main.html";
+            } else {
+                alert("Wrong password babe 😭");
+            }
+        }
+    </script>
 
 </body>
 </html>
