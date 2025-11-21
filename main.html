@@ -1,116 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Romantic Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Disable password manager -->
+    <meta name="autocomplete" content="off">
+    <meta name="password-manager" content="disable">
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: url("beachbg.jpg") no-repeat center center/cover;
-        font-family: 'Poppins', sans-serif;
-        color: white;
-        text-align: center;
-        overflow-x: hidden;
-    }
+    <title>For My Love ❤️</title>
 
-    h1, h2 {
-        font-family: "Great Vibes", cursive;
-        font-size: 3rem;
-        margin-top: 40px;
-        animation: fadeIn 2s ease;
-        text-shadow: 0 0 10px #ffb3ec;
-    }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            text-align: center;
 
-    p {
-        width: 80%;
-        margin: auto;
-        font-size: 1.2rem;
-        line-height: 1.6;
-        animation: fadeInUp 2s ease;
-    }
+            /* Your background */
+            background-image: url("bg.jpg"); /* change file name if needed */
+            background-size: contain; /* NOT zoomed */
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-attachment: fixed;
+            background-color: #000;
+        }
 
-    .dog-gallery {
-        width: 90%;
-        margin: 30px auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
+        /* Forces Chrome to stop showing password popup */
+        input, form {
+            display: none !important;
+        }
 
-    .dog-gallery img {
-        width: 100%;
-        height: 280px;
-        object-fit: cover;
-        border-radius: 20px;
-        animation: fadeIn 2s ease;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    }
+        .container {
+            padding: 20px;
+            margin-top: 100px;
+        }
 
-    .song-section {
-        margin-top: 50px;
-    }
+        .text {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 20px;
+            border-radius: 15px;
+        }
 
-    audio {
-        width: 80%;
-        margin-top: 15px;
-    }
+        h1 {
+            font-size: 40px;
+            margin-top: 60px;
+            font-weight: 600;
+            color: #ffb6e6;
+            text-shadow: 0 0 10px rgba(255, 143, 219, 0.7);
+        }
 
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
+        .dog-gallery {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
 
-    @keyframes fadeInUp {
-        from {opacity: 0; transform: translateY(20px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
-</style>
+        .dog-gallery img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>For My Love</h1>
+    <div class="container">
 
-<p>
-Hey babe, I just wanna confess something I kept inside for months.  
-I'm in love with you babe. You always make my days brighter and make my heart go a little faster.  
-So I made this small place on the internet just for you.  
-Idk if this is unique or something, but I felt like doing something that makes you happy.  
-No need to overthink—I’ll be there for you till I die.  
-You said “don’t ask will you be my girlfriend” so nope I’m not asking that.  
-I’m asking…  
-<b>Will you be the love of my life?</b>  
-I’m in love with you so madly, it drives me crazy.  
-I love you babyyyy Muah my sweet little cupcake.
-</p>
+        <div class="text">
+            <p>
+                make my heart go a little faster. So I made this small place on the internet just for you.
+                I felt like doing something that makes you happy. No need to overthink—
+                I'll be there for you till I die.
+                You said “don’t ask will you be my girlfriend” so nope I’m not asking that.
+                I’m asking… <b>Will you be the love of my life?</b><br><br>
+                I’m in love with you so madly, it drives me crazy.
+                I love you babyyy. Muah my sweet little cupcake.
+            </p>
+        </div>
 
-<h2>Cutiepie Things You Love 💕</h2>
+        <h1>Cutiepie Things You Love 💕</h1>
 
-<div class="dog-gallery">
-    <img src="dog1.jpeg">
-    <img src="dog2.jpeg">
-    <img src="dog3.jpeg">
-    <img src="dog4.jpeg">
-</div>
+        <div class="dog-gallery">
+            <img src="dog1.jpg" alt="">
+            <img src="dog2.jpg" alt="">
+            <img src="dog3.jpg" alt="">
+            <img src="dog4.jpg" alt="">
+        </div>
 
-<h2>Favourite Song 🎵</h2>
-
-<p>
-I'm sorry baby Idk the songs which you hear, all I know is you mentioned about this song which you like so I just added this.  
-I'm sorry baby girl. Please listen fully ok?
-</p>
-
-<div class="song-section">
-    <audio controls>
-        <source src="agar.mp3" type="audio/mpeg">
-    </audio>
-</div>
+    </div>
 
 </body>
 </html>
