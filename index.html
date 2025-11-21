@@ -1,71 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>For My Love Only</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lockscreen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  background: url('sunset.jpeg') no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial;
-}
+    body {
+        margin: 0;
+        padding: 0;
+        background: url("sunsetbg.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Poppins", sans-serif;
+        animation: fadePage 1.8s ease-in-out;
+        color: white;
+    }
 
-.box {
-  background: rgba(0,0,0,0.45);
-  padding: 25px;
-  border-radius: 15px;
-  width: 300px;
-  text-align: center;
-  color: white;
-  backdrop-filter: blur(5px);
-}
+    @keyframes fadePage {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 
-input {
-  width: 90%;
-  padding: 8px;
-  margin-top: 10px;
-  border-radius: 8px;
-  border: none;
-}
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: inherit;
+        background-size: cover;
+        z-index: -1;
+        transform: scale(1.05);
+        filter: blur(4px) brightness(0.85);
+    }
 
-button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  background: #3b82f6;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
-}
+    .lock-container {
+        width: 90%;
+        max-width: 380px;
+        margin: 120px auto 0;
+        background: rgba(0,0,0,0.35);
+        padding: 25px;
+        border-radius: 22px;
+        backdrop-filter: blur(6px);
+        text-align: center;
+        animation: slideDown 1.2s ease-out;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 50px;
+        margin-bottom: 10px;
+        color: #ffd6f5;
+        text-shadow: 0 0 14px rgba(255,150,200,0.9);
+        animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+        from { text-shadow: 0 0 10px rgba(255,200,230,0.6); }
+        to { text-shadow: 0 0 25px rgba(255,150,200,1); }
+    }
+
+    .input-box {
+        width: 90%;
+        padding: 14px;
+        font-size: 18px;
+        border-radius: 14px;
+        border: none;
+        outline: none;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .unlock-btn {
+        margin-top: 18px;
+        width: 100%;
+        padding: 12px;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        background: rgba(255,180,220,0.7);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: "Poppins";
+    }
+
+    .unlock-btn:hover {
+        background: rgba(255,150,200,0.9);
+        transform: scale(1.04);
+        box-shadow: 0 0 18px rgba(255,140,200,0.9);
+    }
+
+    .error {
+        margin-top: 15px;
+        color: #ff8ea8;
+        font-size: 15px;
+        display: none;
+    }
 </style>
-
 </head>
+
 <body>
 
-<div class="box">
-  <h2>Enter Password</h2>
-  <input type="password" id="pass" placeholder="Password">
-  <button onclick="unlock()">Unlock</button>
-  <p id="msg" style="color:red;"></p>
+<div class="lock-container">
+    <h1>For My Love Only</h1>
+
+    <input 
+        type="text" 
+        id="passcode" 
+        class="input-box" 
+        placeholder="Enter Passcode..."
+        autofocus
+    >
+
+    <button class="unlock-btn" onclick="unlock()">Unlock</button>
+
+    <div class="error" id="errorMsg">Wrong password, try again baby 💗</div>
 </div>
 
+
 <script>
-function unlock() {
-  const p = document.getElementById("pass").value;
-  if (p === "mycupcakebaby") {
-    window.location.href = "main.html";
-  } else {
-    document.getElementById("msg").innerText = "Wrong password!";
-  }
-}
+    function unlock() {
+        let code = document.getElementById("passcode").value.trim();
+
+        if (code.toLowerCase() === "mycupcakebaby") {
+            window.location.href = "main.html";
+        } else {
+            document.getElementById("errorMsg").style.display = "block";
+        }
+    }
 </script>
 
 </body>
