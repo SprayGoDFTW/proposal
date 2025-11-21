@@ -1,178 +1,80 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Love Only ❤️</title>  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love Only</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
     body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        background-image: url("pookie.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: brightness(0.8);
+        text-align: center;
     }
 
-    /* LOCKSCREEN */
-    .lockscreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle at center, rgba(0,102,255,0.25), #000 70%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      z-index: 9999;
-      animation: fadeIn 1.5s ease;
+    h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 55px;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(0, 140, 255, 0.8), 
+                     0 0 20px rgba(0, 140, 255, 0.7);
+        margin-bottom: 10px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .heart {
+        font-size: 55px;
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        margin-bottom: 25px;
     }
 
-    .lock-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: #8ab6ff;
-      text-shadow: 0 0 12px #3b82f6, 0 0 25px #1d4ed8;
-      animation: glowPulse 2s infinite alternate;
+    .input-box {
+        width: 80%;
+        max-width: 300px;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
     }
 
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 8px #1e40af; }
-      to { text-shadow: 0 0 20px #60a5fa; }
+    .btn {
+        margin-top: 20px;
+        background: #ff4e8a;
+        padding: 12px 45px;
+        border-radius: 12px;
+        border: none;
+        color: white;
+        font-size: 20px;
+        font-family: "Poppins", sans-serif;
     }
+</style>
 
-    .pass-input {
-      width: 80%;
-      max-width: 350px;
-      padding: 15px;
-      font-size: 1.2rem;
-      border-radius: 12px;
-      border: none;
-      outline: none;
-      text-align: center;
-      margin-bottom: 20px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 15px rgba(59,130,246,0.3);
-    }
+</head>
+<body>
 
-    .unlock-btn {
-      padding: 12px 30px;
-      background: #3b82f6;
-      border: none;
-      color: white;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(59,130,246,0.4);
-      transition: 0.2s ease;
-    }
+<h1>For My Love Only</h1>
+<div class="heart">❤️</div>
 
-    .unlock-btn:hover {
-      background: #60a5fa;
-      box-shadow: 0 0 20px rgba(96,165,250,0.7);
-    }
+<input type="text" class="input-box" placeholder="Enter Passcode…">
 
-    /* MAIN PAGE */
-    .main-content {
-      opacity: 0;
-      pointer-events: none;
-      transition: 1s ease;
-    }
+<button class="btn">Unlock</button>
 
-    .main-content.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .container {
-      max-width: 700px;
-      padding: 30px;
-      margin: auto;
-      color: white;
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.6rem;
-      margin-top: 50px;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    }
-
-    /* SLIDESHOW */
-    .slideshow-container {
-      width: 90%;
-      max-width: 350px;
-      margin: 30px auto;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(59,130,246,0.7);
-    }
-
-    .slide {
-      display: none;
-      width: 100%;
-      border-radius: 20px;
-    }
-  </style></head><body>
-  <div class="lockscreen" id="lockscreen">
-    <div class="lock-title">For My Love Only ❤️</div><input type="password" id="passInput" class="pass-input" placeholder="Enter Passcode..." />
-<button class="unlock-btn" onclick="unlock()">Unlock</button>
-
-<div id="wrongText" style="color:#ff6b6b; margin-top:10px; display:none; font-size:1rem;">Wrong passcode 😭</div>
-
-  </div>  <div class="main-content" id="main">
-    <div class="container">
-      <h1 style="text-align:center; color:#8ab6ff; font-size:3rem; text-shadow:0 0 12px #3b82f6;">Hey... I Made This For You ❤️</h1><p>Hey babe, I just wanna confess something which I kept for months. I'm in love with you babe...</p>
-  <p>You make my days brighter and my heart beat faster. I wanted to make something special for you...</p>
-  <p>Will you be the love of my life? I'm in love with you sooo madly...</p>
-  <p>I love you babyyyyyyy ❤️</p>
-</div>
-
-<h2 style="text-align:center; color:#8ab6ff; font-family:'Great Vibes', cursive; font-size:2.5rem; text-shadow:0 0 10px #3b82f6;">Cutiepie Things You Love</h2>
-
-<div class="slideshow-container">
-  <img class="slide" src="cutypie.jpeg" />
-  <img class="slide" src="dog aproveitando o sol.jpeg" />
-  <img class="slide" src="pookie🎀.jpeg" />
-  <img class="slide" src="b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg" />
-</div>
-
-  </div>  <script>
-    const correctPass = "mycupcakebaby";
-
-    function unlock() {
-      let entered = document.getElementById("passInput").value;
-
-      if (entered === correctPass) {
-        document.getElementById("lockscreen").style.opacity = "0";
-        setTimeout(() => {
-          document.getElementById("lockscreen").style.display = "none";
-        }, 800);
-        document.getElementById("main").classList.add("show");
-      } else {
-        document.getElementById("wrongText").style.display = "block";
-      }
-    }
-
-    // Slideshow autoplay
-    let slideIndex = 0;
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 2500);
-    }
-    showSlides();
-  </script></body>
+</body>
 </html>
