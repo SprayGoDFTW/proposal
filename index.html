@@ -1,147 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For You ❤️</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cookie&family=Great+Vibes&display=swap');
-
-    /* MAIN BACKGROUND BLUR EFFECT */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('e40bab66a8c1ea47cba6c6b8127f6b80.jpg') no-repeat center center fixed;
-      background-size: cover;
-      filter: brightness(1.1) blur(3px);
-      z-index: -2;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
     body {
       margin: 0;
       padding: 0;
+      background-image: url("https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/e40bab66a8c1ea47cba6c6b8127f6b80.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       font-family: 'Great Vibes', cursive;
-      color: #fff;
-      text-align: center;
-      position: relative;
-    }
-
-    /* Soft overlay for readability */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.25);
-      z-index: -1;
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
     }
 
     .container {
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
-      padding: 20px;
-      position: relative;
-      z-index: 2;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.35); /* soft glow for readability */
+      border-radius: 20px;
+      margin-top: 60px;
     }
 
     h1 {
-      font-size: 2.5rem;
-      color: #ff4f7a;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffb3d9; /* soft romantic pink */
     }
 
     p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-
-    .photos img {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      font-size: 1.5rem;
+      line-height: 1.6;
+      text-align: center;
     }
 
     audio {
-      margin-top: 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Floating hearts animation */
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
-    }
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      color: #ff4f7a;
-      font-size: 24px;
-      animation: float 6s linear infinite;
-      opacity: 0.8;
-      z-index: 1;
+      display: block;
+      margin: 30px auto;
     }
   </style>
 </head>
+
 <body>
-
-  <div class="overlay"></div>
-
   <div class="container">
     <h1>Hey... I Made This For You ❤️</h1>
+
     <p>
-      Hey babe, I just wanna confess something which I kept for months. I'm in love with you, babe.
-      You always make my days brighter and make my heart beat a little faster. So I made this small
-      place on the internet just for you, babe.
-    </p>
-    <p>
-      Idk if this is unique or something, but I felt like doing something that makes you happy. No need
-      to overthink or anything — I'll be there for you till I die.
-    </p>
-    <p>
-      You said “don’t ask will you be my girlfriend,” so nope, I’m not gonna ask that. I’ll ask this:
-      Will you be the love of my life? I’m in love with you sooo madly. This whole thing drives me
-      crazy atp, ahhh.
-    </p>
-    <p>
-      But yaaa… I love you babyyyyyyy. Muah, my sweet little cupcake 💖
-    </p>
-    <p>
-      I don’t know what the future holds, but I know one thing — I’d love to share it
-      with you. Will you be mine? 💕
+      Hey babe, I just wanna confess something which I kept for months. I'm in love with you babe.
+      You always make my days brighter and make my heart a little faster.
     </p>
 
-    <div class="photos">
-      <img src="photo1.jpg" alt="Cute Photo 1" />
-      <img src="photo2.jpg" alt="Cute Photo 2" />
-    </div>
+    <p>
+      So I made this small place on the internet just for you babe. Idk if this is unique or something
+      but I felt like doing something which makes you happy. No need to overthink or anything —
+      I'll be there for you till I die.
+    </p>
+
+    <p>
+      You said don't ask “will you be my girlfriend,” so nope I'm not gonna ask that.  
+      I'll ask…  
+      **Will you be the love of my life?**  
+      I'm in love with you sooo madly. This thing drives me crazy atp ahhh.
+    </p>
+
+    <p>
+      But yaaa I love you babyyyyyyy.  
+      Muah my sweet little cupcake ❤️
+    </p>
 
     <audio controls autoplay>
-      <source src="romantic-song.mp3" type="audio/mpeg" />
-      Your browser does not support the audio tag.
+      <source src="romantic-song.mp3" type="audio/mpeg">
     </audio>
+
   </div>
-
-  <!-- Floating hearts -->
-  <script>
-    const heartCount = 12;
-    for (let i = 0; i < heartCount; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '❤';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = (Math.random() * 5) + 's';
-      document.body.appendChild(heart);
-    }
-  </script>
-
 </body>
 </html>
