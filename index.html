@@ -1,302 +1,156 @@
-<!DOCTYPE html><html lang="en">
+<!-- New Theme: Full Keyboard Passcode (not iPhone numeric-only) --><!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For You ❤️</title>  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love Only ❤️</title>  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      background-image: url("https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/e40bab66a8c1ea47cba6c6b8127f6b80.jpg");
+      background: #000;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    /* LOCKSCREEN */
+    .lockscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=1050&q=80');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: "Great Vibes", cursive;
-      color: #fff;
-      text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
-      overflow-x: hidden;
-    }
-
-    /* ---------------------- LOCK SCREEN ---------------------- */
-    #lockscreen {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
       z-index: 9999;
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      transition: opacity 0.8s ease;
     }
 
-    #lock-title {
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-      color: white;
-      letter-spacing: 1px;
+    .lock-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .pass-input {
+      width: 80%;
+      max-width: 350px;
+      padding: 15px;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      border: none;
+      outline: none;
       text-align: center;
+      margin-bottom: 20px;
     }
 
-    .passcode-dots {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 25px;
-    }
-
-    .dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: transparent;
-      border: 2px solid white;
-      transition: 0.3s;
-    }
-
-    /* keypad */
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 80px);
-      gap: 18px;
-      justify-content: center;
-    }
-
-    .key {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
+    .unlock-btn {
+      padding: 12px 30px;
+      background: #ff4c8b;
+      border: none;
       color: white;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      font-size: 1.1rem;
+      border-radius: 10px;
       cursor: pointer;
-      user-select: none;
-      transition: 0.2s;
     }
 
-    .key:active {
-      transform: scale(0.9);
-      background: rgba(255,255,255,0.25);
+    .unlock-btn:hover {
+      background: #ff7aa8;
     }
 
-    /* shake wrong */
-    .shake {
-      animation: shake 0.4s linear;
-    }
-
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(-12px); }
-      40% { transform: translateX(12px); }
-      60% { transform: translateX(-12px); }
-      80% { transform: translateX(12px); }
-      100% { transform: translateX(0); }
-    }
-
-    /* ---------------------- CONTENT ---------------------- */
-    .container {
-      max-width: 750px;
-      margin: auto;
-      padding: 40px 20px;
-      margin-top: 60px;
+    /* MAIN PAGE HIDDEN INITIALLY */
+    .main-content {
       opacity: 0;
-      transition: opacity 1s ease;
+      pointer-events: none;
+      transition: 1s ease;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: #ffb3d9;
+    .main-content.show {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    p {
-      font-size: 1.5rem;
-      line-height: 1.6;
-      text-align: center;
+    /* PAGE CONTENT */
+    .container {
+      max-width: 700px;
+      padding: 30px;
+      margin: auto;
+      color: white;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.6rem;
+      margin-top: 50px;
     }
 
-    /* Typewriter */
-    .typewriter {
+    /* SLIDESHOW */
+    .slideshow-container {
+      width: 90%;
+      max-width: 350px;
+      margin: 30px auto;
+      border-radius: 20px;
       overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid #ffb3d9;
-      animation: typing 4s steps(40), blink .7s infinite;
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    /* Divider */
-    .divider {
-      text-align: center;
-      font-size: 2rem;
-      margin: 40px 0;
-    }
-
-    /* Photos section */
-    .photos-section h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: #ffb3d9;
-      margin-bottom: 20px;
-    }
-
-    .photos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      padding: 10px;
-    }
-
-    .photos-grid img {
+    .slide {
+      display: none;
       width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.45);
+      border-radius: 20px;
     }
-
-    /* Slideshow */
-    .slideshow {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .slide-img {
-      width: 85%;
-      border-radius: 18px;
-      box-shadow: 0 0 16px rgba(0,0,0,0.5);
-      animation: fadeSlide 1s ease;
-    }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: scale(0.96); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-  </style></head><body>  <!-- LOCKSCREEN -->  <div id="lockscreen">
-    <div id="lock-title">For My Love Only ❤️</div><div class="passcode-dots" id="dots">
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
+  </style></head><body>
+  <!-- LOCK SCREEN WITH FULL KEYBOARD INPUT -->
+  <div class="lockscreen" id="lockscreen">
+    <div class="lock-title">For My Love Only ❤️</div>
+    <input type="password" id="passInput" class="pass-input" placeholder="Enter Passcode..." />
+    <button class="unlock-btn" onclick="unlock()">Unlock</button>
+    <div id="wrongText" style="color:#ff6b6b; margin-top:10px; display:none;">Wrong passcode 😭</div>
+  </div>  <!-- MAIN CONTENT -->  <div class="main-content" id="main">
+    <div class="container">
+      <h1 style="text-align:center; color:#ffb3d9;">Hey... I Made This For You ❤️</h1><p>Hey babe, I just wanna confess something which I kept for months. I'm in love with you babe...</p>
+  <p>So I made this small place on the internet just for you babe...</p>
+  <p>Will you be the love of my life? I'm in love with you sooo madly...</p>
+  <p>But yaaa I love you babyyyyyyy ❤️</p>
 </div>
 
-<div class="keypad">
-  <div class="key">1</div>
-  <div class="key">2</div>
-  <div class="key">3</div>
-  <div class="key">4</div>
-  <div class="key">5</div>
-  <div class="key">6</div>
-  <div class="key">7</div>
-  <div class="key">8</div>
-  <div class="key">9</div>
-  <div></div>
-  <div class="key">0</div>
-  <div></div>
+<h2 style="text-align:center; color:#ffb3d9; font-family:'Great Vibes', cursive; font-size:2.5rem;">Cutiepie Things You Love</h2>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-container">
+  <img class="slide" src="cutypie.jpeg" />
+  <img class="slide" src="dog aproveitando o sol.jpeg" />
+  <img class="slide" src="pookie🎀.jpeg" />
+  <img class="slide" src="b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg" />
 </div>
 
-  </div>  <!-- MAIN CONTENT -->  <div class="container" id="mainContent" style="opacity:0;">
-    <h1>Hey... I Made This For You ❤️</h1><p class="typewriter">Hey babe, I just wanna confess something which I kept for months...</p>
+  </div>  <script>
+    const correctPass = "mycupcakebaby";
 
-<p class="typewriter">You always make my days brighter and make my heart a little faster.</p>
+    function unlock() {
+      let entered = document.getElementById("passInput").value;
+      if (entered === correctPass) {
+        document.getElementById("lockscreen").style.display = "none";
+        document.getElementById("main").classList.add("show");
+      } else {
+        document.getElementById("wrongText").style.display = "block";
+      }
+    }
 
-<p class="typewriter">So I made this small place on the internet just for you babe...</p>
-
-<p class="typewriter"><strong>Will you be the love of my life?</strong> I'm in love with you sooo madly.</p>
-
-<p class="typewriter">I love you babyyyyyyy. Muah my sweet little cupcake ❤️</p>
-
-<audio controls autoplay>
-  <source src="romantic-song.mp3" type="audio/mpeg" />
-</audio>
-
-<div class="divider">🐾🐾🐾</div>
-
-<div class="photos-section">
-  <h2>Cutiepie Things Which You Love 💖</h2>
-
-  <div class="photos-grid">
-    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg" />
-    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg" />
-    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg" />
-    <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg" />
-  </div>
-</div>
-
-<div class="slideshow">
-  <h2>More Cute Moments 💞</h2>
-  <img id="slide" class="slide-img" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/e40bab66a8c1ea47cba6c6b8127f6b80.jpg" />
-</div>
-
-  </div>  <!-- SCRIPT -->  <script>
-    const correctCode = "mycupcakebaby";
-    let inputCode = "";
-    const dots = document.querySelectorAll(".dot");
-    const lockscreen = document.getElementById("lockscreen");
-    const mainContent = document.getElementById("mainContent");
-
-    document.querySelectorAll(".key").forEach(key => {
-      key.addEventListener("click", () => {
-        const val = key.textContent;
-        inputCode += val;
-
-        if (dots[inputCode.length - 1]) dots[inputCode.length - 1].style.background = "white";
-
-        if (inputCode.length === correctCode.length) {
-          if (inputCode === correctCode) {
-            lockscreen.style.opacity = "0";
-            setTimeout(() => lockscreen.style.display = "none", 900);
-            setTimeout(() => mainContent.style.opacity = "1", 200);
-          } else {
-            lockscreen.classList.add("shake");
-            setTimeout(() => lockscreen.classList.remove("shake"), 500);
-            dots.forEach(dot => dot.style.background = "transparent");
-            inputCode = "";
-          }
-        }
-      });
-    });
-
-    /* Slideshow */
-    const slides = [
-      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg",
-      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg",
-      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg",
-      "https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg"
-    ];
-
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % slides.length;
-      const slide = document.getElementById("slide");
-      slide.src = slides[idx];
-      slide.style.animation = "none";
-      void slide.offsetWidth;
-      slide.style.animation = "fadeSlide 1s ease";
-    }, 3500);
+    // Slideshow
+    let slideIndex = 0;
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2500);
+    }
+    showSlides();
   </script></body>
 </html>
