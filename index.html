@@ -25,7 +25,6 @@
       max-width: 750px;
       margin: auto;
       padding: 40px 20px;
-      border-radius: 20px;
       margin-top: 60px;
     }
 
@@ -46,6 +45,31 @@
       display: block;
       margin: 30px auto;
     }
+
+    /* New section styles */
+    .photos-section {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .photos-section h2 {
+      font-size: 2.7rem;
+      color: #ffb3d9;
+      margin-bottom: 25px;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .photos-grid img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    }
   </style>
 </head>
 
@@ -65,14 +89,14 @@
     </p>
 
     <p>
-      You said don't ask “will you be my girlfriend,” so nope I'm not gonna ask that.<br>
-      I'll ask…<br>
+      You said don't ask “will you be my girlfriend,” so nope I'm not gonna ask that.  
+      I'll ask…  
       <strong>Will you be the love of my life?</strong><br>
       I'm in love with you sooo madly. This thing drives me crazy atp ahhh.
     </p>
 
     <p>
-      But yaaa I love you babyyyyyyy.<br>
+      But yaaa I love you babyyyyyyy.  
       Muah my sweet little cupcake ❤️
     </p>
 
@@ -81,26 +105,15 @@
     </audio>
   </div>
 
-  <!-- NEW PUPPY SECTION -->
-  <div class="container" style="margin-top: 80px;">
-    <h1 style="font-size: 2.5rem; color: #ffb3d9; text-align: center;">
-      Cutiepie Things Which You Love 🐾
-    </h1>
+  <!-- New photo section -->
+  <div class="photos-section">
+    <h2>Cutiepie Things Which You Love 💖</h2>
 
-    <div style="display: flex; flex-direction: column; gap: 30px; margin-top: 40px;">
-
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/pookie%F0%9F%8E%80.jpeg"
-           style="width: 100%; border-radius: 20px;">
-
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/dog%20aproveitando%20o%20sol.jpeg"
-           style="width: 100%; border-radius: 20px;">
-
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/cutypie.jpeg"
-           style="width: 100%; border-radius: 20px;">
-
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/main/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg"
-           style="width: 100%; border-radius: 20px;">
-
+    <div class="photos-grid">
+      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg" alt="cute puppy">
+      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg" alt="cute puppy">
+      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg" alt="cute puppy">
+      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg" alt="cute puppy">
     </div>
   </div>
 
