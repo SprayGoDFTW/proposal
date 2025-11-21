@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For You ❤️</title>
 
-  <!-- Font -->
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
@@ -20,8 +19,20 @@
       font-family: "Great Vibes", cursive;
       color: #ffffff;
       text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+      cursor: none;
       overflow-x: hidden;
-      cursor: none; /* hide normal cursor for heart cursor */
+    }
+
+    .cursor-heart {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      pointer-events: none;
+      background: #ff7bbf;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ff7bbf;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
     }
 
     .container {
@@ -29,8 +40,6 @@
       margin: auto;
       padding: 40px 20px;
       margin-top: 60px;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
     }
 
     h1 {
@@ -51,21 +60,15 @@
       margin: 30px auto;
     }
 
-    /* Divider with paw prints */
     .divider {
       text-align: center;
       font-size: 2rem;
       margin: 40px 0;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
     }
 
-    /* Photo Section */
     .photos-section {
       margin-top: 40px;
       text-align: center;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
     }
 
     .photos-section h2 {
@@ -85,13 +88,9 @@
       width: 100%;
       border-radius: 18px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1.5s ease forwards;
       position: relative;
     }
 
-    /* Sparkles around images */
     .photos-grid img::after {
       content: "✨";
       position: absolute;
@@ -99,6 +98,23 @@
       right: -10px;
       animation: sparkle 2s infinite ease-in-out;
       font-size: 1.5rem;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Fade / scroll animations */
+    .fade-element {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+    .fade-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Floating hearts */
@@ -111,7 +127,6 @@
       pointer-events: none;
       z-index: 2;
     }
-
     .heart {
       position: absolute;
       bottom: 0;
@@ -120,49 +135,6 @@
       font-size: 1.4rem;
       color: #ffb3d9;
     }
-
-    /* Glowing heart cursor */
-    .cursor-heart {
-      position: fixed;
-      width: 25px;
-      height: 25px;
-      pointer-events: none;
-      background: #ff7bbf;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #ff7bbf;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes sparkle {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.4);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
     @keyframes floatUp {
       0% {
         transform: translateY(0) translateX(0);
@@ -192,7 +164,7 @@
     });
   </script>
 
-  <div class="container">
+  <div class="container fade-element">
     <h1>Hey... I Made This For You ❤️</h1>
 
     <p>
@@ -224,17 +196,16 @@
     </audio>
   </div>
 
-  <div class="divider">🐾🐾🐾</div>
+  <div class="divider fade-element">🐾🐾🐾</div>
 
-  <!-- Photo Section -->
-  <div class="photos-section">
+  <div class="photos-section fade-element">
     <h2>Cutiepie Things Which You Love 💖</h2>
 
     <div class="photos-grid">
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg" />
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg" />
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg" />
-      <img src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg" />
+      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/cutypie.jpeg">
+      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/b00ddb4b-d748-4789-b0e2-abd7dacc0a18.jpeg">
+      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/dog%20aproveitando%20o%20sol.jpeg">
+      <img class="fade-element" src="https://raw.githubusercontent.com/SprayGoDFTW/proposal/0a511aded3513a7831bdca441ecf3e23339451f1/pookie%F0%9F%8E%80.jpeg">
     </div>
   </div>
 
@@ -242,6 +213,7 @@
   <div class="hearts-container" id="heartsContainer"></div>
 
   <script>
+    // Floating hearts
     function spawnHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -249,13 +221,20 @@
       heart.style.left = Math.random() * window.innerWidth + "px";
       heart.style.animationDuration = 4 + Math.random() * 4 + "s";
       document.getElementById("heartsContainer").appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
+      setTimeout(() => { heart.remove(); }, 8000);
     }
-
     setInterval(spawnHeart, 600);
+
+    // REAL fade animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-element').forEach(el => observer.observe(el));
   </script>
 
 </body>
