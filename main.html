@@ -5,104 +5,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<!-- Romantic Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url("beachbg.jpg") no-repeat center center/cover;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+    }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: url('beachbg.jpg') no-repeat center/cover fixed;
-    overflow-y: scroll;
-    color: white;
-}
+    h1, h2 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3rem;
+        margin-top: 40px;
+        animation: fadeIn 2s ease;
+        text-shadow: 0 0 10px #ffb3ec;
+    }
 
-section {
-    width: 90%;
-    margin: auto;
-    padding: 25px;
-    margin-top: 40px;
-    border-radius: 20px;
-    background: rgba(0,0,0,0.15);
-    backdrop-filter: blur(0px);
-}
+    p {
+        width: 80%;
+        margin: auto;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        animation: fadeInUp 2s ease;
+    }
 
-h1, h2 {
-    text-align: center;
-    font-family: 'Great Vibes', cursive;
-    font-size: 45px;
-    color: #ffb3d9;
-    text-shadow: 0 0 15px #ff7ab8;
-}
+    .dog-gallery {
+        width: 90%;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
 
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
+    .dog-gallery img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 20px;
+        animation: fadeIn 2s ease;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
 
-.dogs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-}
+    .song-section {
+        margin-top: 50px;
+    }
 
-.dogs img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #fff;
-}
+    audio {
+        width: 80%;
+        margin-top: 15px;
+    }
 
-audio {
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 25px;
-}
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes fadeInUp {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
 </style>
-
 </head>
 
 <body>
 
-<section>
-    <h1>For My Love ❤️</h1>
+<h1>For My Love</h1>
 
-    <p>
-    Hey babe, I just wanna confess something which I kept it for months, I'm in love with you babe,
-    You always makes my days brighter and make my heart a little faster.
-    So I made this small place on internet just for you babe.
-    Idk this is unique or something but I felt like doing something which makes you happy.
-    No need to overthink or something I'll be there for you till I die.
-    You said don't ask will you be my girlfriend so nope I'm not gonna ask that.
-    I'll ask mam? Will you be the love of my life?
-    I'm in love with you like soo madlyy. This thing drives me crazy atp.
-    Yaaa I love you babyyyyy Muah my sweet little cupcake ❤️
-    </p>
-</section>
+<p>
+Hey babe, I just wanna confess something I kept inside for months.  
+I'm in love with you babe. You always make my days brighter and make my heart go a little faster.  
+So I made this small place on the internet just for you.  
+Idk if this is unique or something, but I felt like doing something that makes you happy.  
+No need to overthink—I’ll be there for you till I die.  
+You said “don’t ask will you be my girlfriend” so nope I’m not asking that.  
+I’m asking…  
+<b>Will you be the love of my life?</b>  
+I’m in love with you so madly, it drives me crazy.  
+I love you babyyyy Muah my sweet little cupcake.
+</p>
 
-<section>
-    <h2>Cutiepie Things You Love 💕</h2>
+<h2>Cutiepie Things You Love 💕</h2>
 
-    <div class="dogs">
-        <img src="dog1.jpeg">
-        <img src="dog2.jpeg">
-        <img src="dog3.jpeg">
-        <img src="dog4.jpeg">
-    </div>
-</section>
+<div class="dog-gallery">
+    <img src="dog1.jpeg">
+    <img src="dog2.jpeg">
+    <img src="dog3.jpeg">
+    <img src="dog4.jpeg">
+</div>
 
-<section>
-    <h2>Favourite Song 🎶</h2>
+<h2>Favourite Song 🎵</h2>
 
-    <p style="text-align:center;">Agar Tum Saath Ho – Arijit Singh</p>
+<p>
+I'm sorry baby Idk the songs which you hear, all I know is you mentioned about this song which you like so I just added this.  
+I'm sorry baby girl. Please listen fully ok?
+</p>
 
+<div class="song-section">
     <audio controls>
         <source src="agar.mp3" type="audio/mpeg">
     </audio>
-</section>
+</div>
 
 </body>
 </html>
