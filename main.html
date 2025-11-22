@@ -13,20 +13,23 @@
             text-align: center;
         }
 
+        /* PURE BEACH BACKGROUND — crystal clear */
         body {
             background: url('beachbg.jpeg') no-repeat center center fixed;
             background-size: cover;
         }
 
+        /* PERFECT GLASS EFFECT */
         .container {
-            background: rgba(0, 5, 30, 0.28);   /* Very light tint only */
+            background: rgba(255, 255, 255, 0.10); /* very light glass */
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
             padding: 50px 20px;
-            margin: 20px auto;
+            margin: 25px auto;
             max-width: 94%;
             border-radius: 35px;
-            border: 1px solid rgba(100, 200, 255, 0.25);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            /* Removed backdrop-filter so the background stays crystal clear */
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.50);
         }
 
         h1 {
@@ -35,7 +38,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            text-shadow: 0 0 25px rgba(100, 200, 255, 0.7);
+            text-shadow: 0 0 18px rgba(100, 200, 255, 0.6);
         }
 
         h2 {
@@ -66,8 +69,8 @@
             height: 105px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(100, 220, 255, 0.7);
-            box-shadow: 0 0 30px rgba(100, 220, 255, 0.9);
+            border: 4px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
         }
 
         audio {
@@ -104,10 +107,10 @@
 
     <h2>Cutiepie things you love ♡</h2>
     <div class="dog-row">
-        <img src="dog1.jpeg" alt="cute dog">
-        <img src="dog2.jpeg" alt="cute dog">
-        <img src="dog3.jpeg" alt="cute dog">
-        <img src="dog4.jpeg" alt="cute dog">
+        <img src="dog1.jpeg" alt="">
+        <img src="dog2.jpeg" alt="">
+        <img src="dog3.jpeg" alt="">
+        <img src="dog4.jpeg" alt="">
     </div>
 
     <h2>Favourite Song ♪♡</h2>
@@ -118,7 +121,7 @@
     </audio>
 
     <p class="small-text">
-        I'm sorry baby, I only know this one song you mentioned in our entire conversation<br>
+        I'm sorry baby, I only know this one song you mentioned<br>
         Else I would have added a whole playlist for you.<br>
         I'm sorry cutieeee ❤
     </p>
