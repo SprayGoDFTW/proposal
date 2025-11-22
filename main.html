@@ -8,190 +8,125 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{
     height:100%;
-    font-family:Poppins,Arial,sans-serif;
-    background:url('beachbg.jpg') no-repeat center center fixed;
-    background-size:cover;
-    color:#fff;
+    font-family: Poppins, Arial, sans-serif;
+    background: url('beachbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
   }
-  .overlay{
-    background:rgba(0,0,0,0.35);
-    max-width:940px;
-    margin:28px auto;
-    border-radius:28px;
-    padding:36px;
-    border:1px solid rgba(255,255,255,0.12);
-    box-shadow:0 12px 40px rgba(0,0,0,0.6);
+
+  /* main overlay */
+  .overlay {
+    background: rgba(0,0,0,0.35);
+    max-width: 960px;
+    margin: 28px auto;
+    border-radius: 28px;
+    padding: 36px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
   }
-  h1{
-    font-size:44px;
-    color:#ffd6f2;
-    text-shadow:0 0 18px rgba(255,120,200,0.25);
-    text-align:center;
-    margin-bottom:12px
+
+  h1 {
+    font-size: 44px;
+    color: #ffd6f2;
+    text-shadow: 0 0 18px rgba(255,120,200,0.25);
+    text-align: center;
+    margin-bottom: 12px;
   }
-  p.lead{
-    font-size:18px;
-    line-height:1.8;
-    color:#e7f3ff;
-    margin:18px auto;
-    max-width:850px;
-    text-align:center
+
+  p.lead {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #e7f3ff;
+    margin: 18px auto;
+    max-width: 850px;
+    text-align: center;
   }
-  .section-title{
-    font-size:32px;
-    margin-top:26px;
-    margin-bottom:12px;
-    color:#ffc8ea;
-    text-shadow:0 0 12px rgba(255,100,180,0.15);
-    text-align:center
+
+  .section-title {
+    font-size: 32px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+    color: #ffc8ea;
+    text-shadow: 0 0 12px rgba(255,100,180,0.15);
+    text-align: center;
   }
-  .dog-row{
+
+  .dog-row {
     display:flex;
     gap:22px;
     justify-content:center;
     flex-wrap:wrap;
-    margin:22px 0 6px
+    margin:22px 0 6px;
   }
-  .dog-row img{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    object-fit:cover;
+  .dog-row img {
+    width:110px;height:110px;border-radius:50%;object-fit:cover;
     border:4px solid rgba(255,255,255,0.75);
     box-shadow:0 6px 28px rgba(255,150,210,0.12);
   }
 
-  /* hearts */
-  .heart{
-    position:fixed;
-    bottom:-30px;
-    color:#ffc0dd;
-    font-size:20px;
-    opacity:0.85;
-    pointer-events:none;
-    animation:floatUp linear infinite
-  }
-  @keyframes floatUp{
-    0%{transform:translateY(0) rotate(0);opacity:1}
-    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
-  }
+  /* floating hearts */
+  .heart{position:fixed;bottom:-30px;color:#ffc0dd;font-size:20px;opacity:0.85;pointer-events:none;animation:floatUp linear infinite}
+  @keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(-120vh) rotate(360deg);opacity:0}}
 
   /* Stamp + Cookie area */
-  .play-area{
-    display:flex;
-    gap:20px;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin:28px 0
-  }
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    padding:18px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,0.06);
-    min-width:220px;
-    max-width:320px;
-    text-align:center;
-    box-shadow:0 8px 30px rgba(0,0,0,0.45)
-  }
-  .card h3{
-    font-size:18px;
-    color:#ffdff1;
-    margin-bottom:10px
-  }
+  .play-area{display:flex;gap:20px;align-items:center;justify-content:center;flex-wrap:wrap;margin:28px 0}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);min-width:220px;max-width:360px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
+  .card h3{font-size:18px;color:#ffdff1;margin-bottom:10px}
 
   /* passport stamp */
   .passport-wrap{position:relative;padding:10px}
   .passport-btn{
-    background:#ff69c8;
-    border:none;
-    color:white;
-    padding:10px 16px;
-    border-radius:10px;
-    font-weight:600;
-    cursor:pointer;
-    box-shadow:0 8px 22px rgba(255,80,170,0.18)
+    background: linear-gradient(90deg,#ff6bb3,#ff4ecf);
+    border:none;color:white;padding:12px 18px;border-radius:28px;font-weight:700;cursor:pointer;
+    box-shadow:0 8px 22px rgba(255,80,170,0.18);font-size:16px;
   }
-  .stamp-area{
-    height:110px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:12px;
-    position:relative
-  }
-  .stamp-plate{
-    width:120px;
-    height:120px;
-    border-radius:999px;
-    border:6px dashed rgba(255,170,210,0.5);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    transform:scale(0.6) rotate(-10deg);
-    transition:all .6s cubic-bezier(.2,.9,.25,1)
-  }
-  .stamp-plate.stamped{
-    opacity:1;
-    transform:scale(1) rotate(0);
-    filter:drop-shadow(0 6px 18px rgba(255,80,170,0.25))
-  }
-  .stamp-text{
-    font-size:14px;
-    color:#fff;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase
-  }
-  .imprint{
-    position:absolute;
-    left:50%;
-    top:30%;
-    transform:translate(-50%,-50%);
-    opacity:0;
-    mix-blend-mode:overlay;
-    color:rgba(255,160,210,0.12);
-    font-weight:800;
-    font-size:120px;
-    transition:opacity .5s
-  }
+  .stamp-area{height:120px;display:flex;align-items:center;justify-content:center;margin-top:12px;position:relative}
+  .stamp-plate{width:120px;height:120px;border-radius:999px;border:6px dashed rgba(255,170,210,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0.6) rotate(-10deg);transition:all .6s cubic-bezier(.2,.9,.25,1)}
+  .stamp-plate.stamped{opacity:1;transform:scale(1) rotate(0);filter:drop-shadow(0 6px 18px rgba(255,80,170,0.25))}
+  .stamp-text{font-size:14px;color:#fff;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .imprint{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);opacity:0;mix-blend-mode:overlay;color:rgba(255,160,210,0.12);font-weight:800;font-size:120px;transition:opacity .5s}
   .imprint.show{opacity:1}
+
+  /* stamp-note paragraph under stamp button */
+  .stamp-note{
+    margin-top:15px;
+    text-align:center;
+    font-size:15px;
+    color:#ffd6ec;
+    font-weight:400;
+    line-height:1.5;
+    padding:0 14px;
+  }
 
   /* fortune cookie */
   .cookie-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
   .cookie{
-    width:120px;
-    height:80px;
-    background:linear-gradient(180deg,#f0c27b,#d58a3b);
-    border-radius:60px 60px 40px 40px;
-    position:relative;
-    box-shadow:0 8px 26px rgba(0,0,0,0.35);
-    cursor:pointer;
-    transform-origin:center;
-    transition:transform .4s
+    width:140px;height:92px;background:linear-gradient(180deg,#f0c27b,#d58a3b);border-radius:60px 60px 40px 40px;position:relative;box-shadow:0 8px 26px rgba(0,0,0,0.35);cursor:pointer;transform-origin:center;transition:transform .4s;
   }
-  .cookie::before{
-    content:'';
-    position:absolute;
-    left:50%;
-    top:18px;
-    transform:translateX(-50%);
-    width:70px;
-    height:42px;
-    background:#f7e1b0;
-    border-radius:40px 40px 20px 20px
-  }
-  .fortune-msg{
-    min-height:58px;
-    padding:8px 10px;
-    border-radius:10px;
-    background:rgba(255,255,255,0.05);
-    font-size:15px;
-    color:#ffdff1;
-    max-width:260px;
-    text-align:center;
+  .cookie::before{content:'';position:absolute;left:50%;top:20px;transform:translateX(-50%);width:82px;height:48px;background:#f7e1b0;border-radius:40px 40px 20px 20px}
+  .cookie::after{content:'';position:absolute;right:18px;top:12px;width:12px;height:6px;background:rgba(255,255,255,0.65);border-radius:6px;transform:rotate(-20deg)}
+  .cookie.cracked{transform:scale(.98) rotate(-6deg)}
+  .cookie .left,.cookie .right{position:absolute;top:0;width:70px;height:92px;background:transparent;border-radius:inherit;overflow:hidden}
+  .cookie .left img,.cookie .right img{position:absolute;left:0;top:0;width:140px;height:92px;object-fit:cover}
+  .cookie .left{left:0}
+  .cookie .right{right:0}
+  .left.open{transform:translateX(-50px) rotate(-20deg)}
+  .right.open{transform:translateX(50px) rotate(18deg)}
+
+  .fortune-msg{min-height:58px;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.04);font-size:15px;color:#ffdff1;max-width:300px;text-align:center}
+
+  /* audio */
+  audio{width:92%;max-width:720px;margin:12px auto 26px;display:block}
+
+  /* small responsive tweaks */
+  @media(max-width:640px){
+    h1{font-size:32px}
+    p.lead{font-size:16px;line-height:1.7}
+    .dog-row img{width:94px;height:94px}
+    .stamp-plate{width:100px;height:100px}
+    .cookie{width:120px;height:78px}
   }
 </style>
 </head>
@@ -215,7 +150,7 @@
 <div class="overlay">
   <h1>For My Sweet Little Cupcake ♡</h1>
 
-  <!-- FULL PARAGRAPH FIXED -->
+  <!-- FULL CONFESSION PARAGRAPH -->
   <p class="lead">
     Hey babe, I just wanna confess something which I kept for months, I'm in love with you babe,<br>
     You always make my days brighter and make my heart beat a little faster. So I made this small place
@@ -232,40 +167,50 @@
 
   <div class="section-title">Cutiepie Things You Love ♡</div>
   <div class="dog-row">
-    <img src="dog1.jpeg">
-    <img src="dog2.jpeg">
-    <img src="dog3.jpeg">
-    <img src="dog4.jpeg">
+    <img src="dog1.jpeg" alt="dog1">
+    <img src="dog2.jpeg" alt="dog2">
+    <img src="dog3.jpeg" alt="dog3">
+    <img src="dog4.jpeg" alt="dog4">
   </div>
 
-  <!-- Stamp + Cookie -->
+  <!-- Stamp + Cookie area -->
   <div class="play-area">
 
-    <!-- stamp -->
-    <div class="card passport-wrap">
+    <!-- Passport Stamp -->
+    <div class="card passport-wrap" aria-label="stamp-card">
       <h3>Entry to My Heart</h3>
-      <button class="passport-btn" id="stampBtn">Stamp My Love ❤️</button>
-      <div class="stamp-area">
-        <div class="stamp-plate" id="stampPlate">
+      <button class="passport-btn passport-btn--main" id="stampBtn" aria-pressed="false">Stamp My Love ❤️</button>
+
+      <div class="stamp-area" aria-hidden="true">
+        <div class="stamp-plate" id="stampPlate" role="img" aria-label="stamp">
           <div class="stamp-text">APPROVED<br>BY LOVE</div>
         </div>
       </div>
-      <div class="imprint" id="imprint">❤</div>
+
+      <div class="imprint" id="imprint" aria-hidden="true">❤</div>
+
+      <!-- STAMP NOTE (the extra paragraph under the stamp) -->
+      <p class="stamp-note">
+        Every time you tap that stamp, it feels like you’re marking a little piece of my heart as yours.
+        It’s silly, but it makes me smile like an idiot — because even a small tap from you feels like a promise I want to keep forever.
+      </p>
     </div>
 
-    <!-- cookie -->
-    <div class="card cookie-wrap">
+    <!-- Fortune Cookie -->
+    <div class="card cookie-wrap" aria-label="fortune-card">
       <h3>Tap the Fortune Cookie</h3>
-      <div class="cookie" id="cookie"></div>
+      <div class="cookie" id="cookie">
+        <div class="left"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='92'><rect width='140' height='92' fill='%23f0c27b'/></svg>" alt=""></div>
+        <div class="right"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='92'><rect width='140' height='92' fill='%23d58a3b'/></svg>" alt=""></div>
+      </div>
       <div class="fortune-msg" id="fortuneMsg">Tap cookie to reveal a little message...</div>
     </div>
 
   </div>
 
   <div class="section-title">Favourite Songs 🎵</div>
-  <p style="color:#ffdff1;font-size:17px;">Agar Tum Saath Ho – Arijit Singh</p>
-
-  <audio controls preload="auto" style="width:92%;max-width:720px;margin:12px auto 26px;display:block;">
+  <p style="color:#ffdff1;font-size:17px;margin-top:6px">Agar Tum Saath Ho – Arijit Singh</p>
+  <audio controls preload="auto">
     <source src="agar.mp3" type="audio/mpeg">
   </audio>
 
@@ -277,46 +222,80 @@
 </div>
 
 <script>
-  /* STAMP */
-  const stampBtn=document.getElementById('stampBtn');
-  const stampPlate=document.getElementById('stampPlate');
-  const imprint=document.getElementById('imprint');
-  let stamped=false;
+  /* STAMP LOGIC */
+  (function(){
+    const stampBtn = document.getElementById('stampBtn');
+    const stampPlate = document.getElementById('stampPlate');
+    const imprint = document.getElementById('imprint');
+    let stamped = false;
 
-  stampBtn.onclick=()=>{
-    if(stamped) return;
-    stamped=true;
-    stampPlate.classList.add('stamped');
-    imprint.classList.add('show');
-    setTimeout(()=>imprint.classList.remove('show'),4000);
-    stampBtn.textContent='Stamped ✔️';
-    stampBtn.style.background='linear-gradient(90deg,#ff7ac4,#ff4ecf)';
-  };
+    stampBtn.addEventListener('click', () => {
+      if (stamped) return;
+      stamped = true;
+      stampPlate.classList.add('stamped');
+      imprint.classList.add('show');
+      stampBtn.setAttribute('aria-pressed','true');
+      // subtle animation
+      stampPlate.animate([
+        { transform: 'scale(0.9) rotate(-6deg)' },
+        { transform: 'scale(1.05) rotate(2deg)' },
+        { transform: 'scale(1) rotate(0)' }
+      ], { duration: 700, easing: 'ease-out' });
+      stampBtn.textContent = 'Stamped ✔️';
+      // color change
+      stampBtn.style.background = 'linear-gradient(90deg,#ff7ac4,#ff4ecf)';
+      // optional tiny floating heart
+      const h = document.createElement('div');
+      h.innerText = '💌';
+      h.style.position = 'fixed';
+      h.style.left = (50 + (Math.random()*8-4)) + 'vw';
+      h.style.top = '55%';
+      h.style.fontSize = '36px';
+      h.style.opacity = '0';
+      h.style.transition = 'transform .9s, opacity .9s';
+      document.body.appendChild(h);
+      requestAnimationFrame(()=> {
+        h.style.opacity = '1';
+        h.style.transform = 'translateY(-120px) scale(1.05)';
+      });
+      setTimeout(()=> h.remove(),900);
+    });
+  })();
 
-  /* FORTUNE COOKIE */
-  const cookie=document.getElementById('cookie');
-  const fortuneMsg=document.getElementById('fortuneMsg');
+  /* FORTUNE COOKIE LOGIC */
+  (function(){
+    const cookie = document.getElementById('cookie');
+    const left = cookie.querySelector('.left');
+    const right = cookie.querySelector('.right');
+    const fortuneMsg = document.getElementById('fortuneMsg');
 
-  const fortunes=[
-    "You're my forever favorite surprise.",
-    "I want endless coffees with you and lazy Sundays.",
-    "We will travel and get lost together—happily.",
-    "You are my home. You are my heart.",
-    "A future with you is my favorite plan."
-  ];
+    const fortunes = [
+      "You're my forever favorite surprise.",
+      "I want endless coffees with you and lazy Sundays.",
+      "We will travel and get lost together—happily.",
+      "You are my home. You are my heart.",
+      "A future with you is my favorite plan."
+    ];
 
-  let cracked=false;
-  cookie.onclick=()=>{
-    if(!cracked){
-      cracked=true;
-      const f=fortunes[Math.floor(Math.random()*fortunes.length)];
-      fortuneMsg.textContent=f;
-      fortuneMsg.style.opacity=1;
-    } else {
-      const f=fortunes[Math.floor(Math.random()*fortunes.length)];
-      fortuneMsg.textContent=f;
-    }
-  };
+    let cracked = false;
+    cookie.addEventListener('click', () => {
+      if (!cracked) {
+        cracked = true;
+        cookie.classList.add('cracked');
+        left.classList.add('open');
+        right.classList.add('open');
+        setTimeout(()=> {
+          const choice = fortunes[Math.floor(Math.random()*fortunes.length)];
+          fortuneMsg.textContent = choice;
+          fortuneMsg.style.opacity = 1;
+        },420);
+      } else {
+        const choice = fortunes[Math.floor(Math.random()*fortunes.length)];
+        fortuneMsg.textContent = choice;
+        fortuneMsg.animate([{opacity:.6},{opacity:1}],{duration:350});
+      }
+    });
+  })();
 </script>
 
 </body>
