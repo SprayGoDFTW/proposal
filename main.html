@@ -3,138 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You ❤️</title>
+    <title>For My Love ♡</title>
 
     <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
         body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            color: #ffd6f5;
-            background: url("beachbg.jpg") no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: white;
             text-align: center;
+            background: url('beachbg.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .container {
-            padding: 30px 15px;
+            background: rgba(0, 0, 0, 0.25);
+            max-width: 95%;
+            margin: 30px auto;
+            padding: 40px 25px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
         }
 
-        .box {
-            backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.35);
-            border-radius: 22px;
-            padding: 22px;
-            width: 90%;
-            margin: 25px auto;
+        h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* ❤️ HEART BUTTON */
-        .heartBtn {
-            width: 90px;
-            height: 90px;
-            background: #ff5f9e;
-            color: white;
+        h2 {
             font-size: 40px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
+            margin: 40px 0 20px;
+            background: linear-gradient(to right, #ff9ec1, #c3ecff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        /* DOG ROW */
+        .dog-row {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            box-shadow: 0 0 10px rgba(255, 100, 150, 0.8);
-            transition: transform 0.2s ease;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 50px;
         }
 
-        .heartBtn:active {
-            transform: scale(0.92);
+        .dog-row img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.8);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255,255,255,0.7);
         }
 
-        /* 🍪 COOKIE BUTTON */
-        .cookieBtn {
-            width: 140px;
-            height: 70px;
-            background: linear-gradient(#e6b57c, #d99445);
-            border-radius: 20px;
-            border: none;
-            font-size: 28px;
-            color: #fff3d6;
+        /* HEART STAMP BUTTON */
+        .heart-btn {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid pink;
+            padding: 15px 25px;
+            font-size: 22px;
+            border-radius: 15px;
             cursor: pointer;
-            margin: 0 auto;
-            box-shadow: 0 0 10px rgba(255, 210, 140, 0.7);
-            transition: transform 0.2s ease;
+            color: white;
+            backdrop-filter: blur(4px);
         }
 
-        .cookieBtn:active {
-            transform: scale(0.94);
-        }
-
-        #heartPara, #fortuneMsg {
+        #heartParagraph {
             display: none;
-            margin-top: 15px;
             font-size: 18px;
-            line-height: 30px;
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        /* FORTUNE COOKIE */
+        .cookie-btn {
+            margin-top: 40px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid #ffd27f;
+            padding: 15px 25px;
+            font-size: 22px;
+            border-radius: 15px;
+            cursor: pointer;
+            color: white;
+            backdrop-filter: blur(4px);
+        }
+
+        #cookieMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        audio {
+            width: 95%;
+            max-width: 550px;
+            margin: 35px auto;
+        }
+
+        .small-text {
+            font-size: 17px;
+            margin-top: 15px;
+            color: #dff3ff;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- ❤️ HEART STAMP -->
-        <div class="box">
-            <h2>Tap the Heart Stamp</h2>
+    <!-- MAIN PARAGRAPH -->
+    <h1>For My Love ♡</h1>
 
-            <button class="heartBtn" id="heartBtn">💗</button>
+    <p>
+        Hey babe, I just wanna confess something which I kept for months, I'm in love with you babe.<br>
+        You always make my days brighter and make my heart beat a little faster. So I made this small place
+        on the internet just for you babe. Idk if this is unique or something but I felt like doing something
+        that makes you happy. No need to overthink, I'll be there for you till I die.<br><br>
 
-            <p id="heartPara">
-                Every time you tap that stamp, it feels like you're marking a little piece 
-                of my heart as yours. It's silly, but it makes me smile like an idiot — 
-                because even a small tap from you feels like a promise I want to keep forever.
-            </p>
-        </div>
+        You said "don't ask will you be my girlfriend" So nope, I'm not gonna ask that.<br>
+        I'll ask mam… <strong>Will you be the love of my life?</strong><br><br>
 
-        <!-- 🍪 FORTUNE COOKIE -->
-        <div class="box">
-            <h2>Tap the Fortune Cookie</h2>
+        I'm in love with you like sooo madlyyy. This thing drives me crazy atp ahhh.<br>
+        But yaaa I love you babyyyyyyy. Muah my sweet little cupcake ❤
+    </p>
 
-            <button class="cookieBtn" id="cookieBtn">🍪</button>
-
-            <p id="fortuneMsg">A future with you is my favorite plan.</p>
-        </div>
-
+    <!-- DOG SECTION -->
+    <h2>Cutiepie Things You Love ♡</h2>
+    <div class="dog-row">
+        <img src="dog1.jpeg">
+        <img src="dog2.jpeg">
+        <img src="dog3.jpeg">
+        <img src="dog4.jpeg">
     </div>
 
-<script>
-    // ❤️ HEART BUTTON CLICK
-    document.getElementById("heartBtn").onclick = function () {
-        document.getElementById("heartPara").style.display = "block";
-    };
+    <!-- HEART STAMP -->
+    <h2>Heart Stamp ♡</h2>
+    <button class="heart-btn" onclick="showHeartParagraph()">Click to Reveal</button>
 
-    // 🍪 COOKIE BUTTON CLICK LOGIC
+    <p id="heartParagraph">
+        This little heart stamp is like a tiny promise from me to you —  
+        that no matter what happens, a part of my heart is always marked with you.  
+        Every time you tap it, just remember… you’re the one who makes my heart feel warm,  
+        soft, safe and stupidly happy in ways I never knew were possible. ♡
+    </p>
+
+    <br><br>
+
+    <!-- FORTUNE COOKIE -->
+    <h2>Fortune Cookie ♡</h2>
+    <button class="cookie-btn" onclick="openCookie()">Open Cookie</button>
+
+    <p id="cookieMessage"></p>
+
+    <br><br>
+
+    <!-- SONG -->
+    <h2>Favourite Song ♪♡</h2>
+    <p>Agar Tum Saath Ho – Arijit Singh</p>
+
+    <audio controls>
+        <source src="agar.mp3" type="audio/mpeg">
+    </audio>
+
+    <p class="small-text">
+        I'm sorry baby, I only know this one song you mentioned in our entire conversation.<br>
+        Else I would have added a whole playlist for you.<br>
+        I'm sorry cutieeee ❤
+    </p>
+
+</div>
+
+<script>
+    function showHeartParagraph() {
+        document.getElementById("heartParagraph").style.display = "block";
+    }
+
     let cookieState = 0;
 
-    document.getElementById("cookieBtn").onclick = function () {
-        const btn = document.getElementById("cookieBtn");
-        const msg = document.getElementById("fortuneMsg");
+    function openCookie() {
+        const msg = document.getElementById("cookieMessage");
 
-        cookieState++;
-
-        if (cookieState === 1) {
-            btn.textContent = "🍪✨";
-            msg.style.display = "block";
-        } 
-        else if (cookieState === 2) {
-            btn.textContent = "🍪";
-            msg.style.display = "none";
-        } 
-        else {
-            btn.textContent = "🍪✨";
+        if (cookieState === 0) {
+            msg.innerHTML = "Your first fortune: Someone loves you a lot more than you think… ♡";
             msg.style.display = "block";
             cookieState = 1;
+        } 
+        else if (cookieState === 1) {
+            msg.innerHTML = "Your second fortune: Your future has me in it… permanently. ♡";
+            cookieState = 0;
         }
-    };
+    }
 </script>
 
 </body>
