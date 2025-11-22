@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,9 +6,7 @@
     <title>For My Love ♡</title>
 
     <style>
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -16,6 +14,34 @@
             text-align: center;
             background: url('beachbg.jpg') no-repeat center center fixed;
             background-size: cover;
+            overflow-x: hidden;
+        }
+
+        /* FLOATING HEARTS */
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            color: pink;
+            font-size: 22px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0.8;
+            z-index: 9999;
+        }
+
+        @keyframes floatUp {
+            0%   { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.6); opacity: 0; }
+        }
+
+        /* SLIDE-IN ANIMATIONS */
+        .slide {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 1.2s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .container {
@@ -50,7 +76,6 @@
             margin-bottom: 20px;
         }
 
-        /* DOG ROW */
         .dog-row {
             display: flex;
             justify-content: center;
@@ -68,8 +93,7 @@
             box-shadow: 0 0 20px rgba(255,255,255,0.7);
         }
 
-        /* HEART STAMP BUTTON */
-        .heart-btn {
+        .heart-btn, .cookie-btn {
             background: rgba(255,255,255,0.15);
             border: 2px solid pink;
             padding: 15px 25px;
@@ -80,36 +104,21 @@
             backdrop-filter: blur(4px);
         }
 
-        #heartParagraph {
-            display: none;
-            font-size: 18px;
-            margin-top: 20px;
-            line-height: 1.8;
-        }
-
-        /* FORTUNE COOKIE */
         .cookie-btn {
-            margin-top: 40px;
-            background: rgba(255,255,255,0.15);
-            border: 2px solid #ffd27f;
-            padding: 15px 25px;
-            font-size: 22px;
-            border-radius: 15px;
-            cursor: pointer;
-            color: white;
-            backdrop-filter: blur(4px);
-        }
-
-        #cookieMessage {
-            display: none;
-            margin-top: 20px;
-            font-size: 18px;
+            border-color: #ffd27f;
         }
 
         audio {
             width: 95%;
             max-width: 550px;
             margin: 35px auto;
+        }
+
+        #heartParagraph, #cookieMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.8;
         }
 
         .small-text {
@@ -121,12 +130,13 @@
 </head>
 <body>
 
-<div class="container">
+<!-- FLOATING HEARTS (auto-generated via JS) -->
 
-    <!-- MAIN PARAGRAPH -->
+<div class="container slide">
+
     <h1>For My Love ♡</h1>
 
-    <p>
+    <p class="slide">
         Hey babe, I just wanna confess something which I kept for months, I'm in love with you babe.<br>
         You always make my days brighter and make my heart beat a little faster. So I made this small place
         on the internet just for you babe. Idk if this is unique or something but I felt like doing something
@@ -139,45 +149,37 @@
         But yaaa I love you babyyyyyyy. Muah my sweet little cupcake ❤
     </p>
 
-    <!-- DOG SECTION -->
-    <h2>Cutiepie Things You Love ♡</h2>
-    <div class="dog-row">
+    <h2 class="slide">Cutiepie Things You Love ♡</h2>
+    <div class="dog-row slide">
         <img src="dog1.jpeg">
         <img src="dog2.jpeg">
         <img src="dog3.jpeg">
         <img src="dog4.jpeg">
     </div>
 
-    <!-- HEART STAMP -->
-    <h2>Heart Stamp ♡</h2>
-    <button class="heart-btn" onclick="showHeartParagraph()">Click to Reveal</button>
+    <h2 class="slide">Heart Stamp ♡</h2>
+    <button class="heart-btn slide" onclick="showHeartParagraph()">Click to Reveal</button>
 
-    <p id="heartParagraph">
+    <p id="heartParagraph" class="slide">
         This little heart stamp is like a tiny promise from me to you —  
         that no matter what happens, a part of my heart is always marked with you.  
         Every time you tap it, just remember… you’re the one who makes my heart feel warm,  
         soft, safe and stupidly happy in ways I never knew were possible. ♡
     </p>
 
-    <br><br>
+    <h2 class="slide">Fortune Cookie ♡</h2>
+    <button class="cookie-btn slide" onclick="openCookie()">Open Cookie</button>
 
-    <!-- FORTUNE COOKIE -->
-    <h2>Fortune Cookie ♡</h2>
-    <button class="cookie-btn" onclick="openCookie()">Open Cookie</button>
+    <p id="cookieMessage" class="slide"></p>
 
-    <p id="cookieMessage"></p>
+    <h2 class="slide">Favourite Song ♪♡</h2>
+    <p class="slide">Agar Tum Saath Ho – Arijit Singh</p>
 
-    <br><br>
-
-    <!-- SONG -->
-    <h2>Favourite Song ♪♡</h2>
-    <p>Agar Tum Saath Ho – Arijit Singh</p>
-
-    <audio controls>
+    <audio controls class="slide">
         <source src="agar.mp3" type="audio/mpeg">
     </audio>
 
-    <p class="small-text">
+    <p class="small-text slide">
         I'm sorry baby, I only know this one song you mentioned in our entire conversation.<br>
         Else I would have added a whole playlist for you.<br>
         I'm sorry cutieeee ❤
@@ -186,10 +188,12 @@
 </div>
 
 <script>
+    /* HEART STAMP */
     function showHeartParagraph() {
         document.getElementById("heartParagraph").style.display = "block";
     }
 
+    /* FORTUNE COOKIE */
     let cookieState = 0;
 
     function openCookie() {
@@ -200,11 +204,27 @@
             msg.style.display = "block";
             cookieState = 1;
         } 
-        else if (cookieState === 1) {
+        else {
             msg.innerHTML = "Your second fortune: Your future has me in it… permanently. ♡";
             cookieState = 0;
         }
     }
+
+    /* FLOATING HEART GENERATOR */
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 900);
 </script>
 
 </body>
