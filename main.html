@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Love ♡</title>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
@@ -11,34 +12,62 @@
             font-family: 'Poppins', sans-serif;
             color: white;
             text-align: center;
+            overflow-x: hidden;
         }
 
-        /* PURE BEACH BACKGROUND — crystal clear */
+        /* Beach Background */
         body {
-            background: url('beachbg.jpeg') no-repeat center center fixed;
+            background: url('beach.jpeg') no-repeat center center fixed;
             background-size: cover;
         }
 
-        /* PERFECT GLASS EFFECT */
+        /* Floating Hearts Animation */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 22px;
+            color: pink;
+            animation: floatUp linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); opacity: 0.9; }
+            100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
+        }
+
+        /* Container with light transparency */
         .container {
-            background: rgba(255, 255, 255, 0.10); /* very light glass */
-            backdrop-filter: blur(12px) saturate(160%);
-            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            background: rgba(0, 0, 0, 0.35);
             padding: 50px 20px;
             margin: 25px auto;
             max-width: 94%;
             border-radius: 35px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.50);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.5s ease-out;
         }
 
+        /* Smooth Fade-In */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glowing Headings */
         h1 {
             font-size: 58px;
             background: linear-gradient(to right, #89f7fe, #66a6ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            text-shadow: 0 0 18px rgba(100, 200, 255, 0.6);
+            text-shadow: 0 0 20px rgba(200, 230, 255, 0.7);
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+            to { text-shadow: 0 0 28px rgba(255,255,255,1); }
         }
 
         h2 {
@@ -47,6 +76,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 40px 0 20px;
+            text-shadow: 0 0 12px rgba(255,180,210,0.75);
         }
 
         p {
@@ -56,6 +86,7 @@
             margin: 20px 0;
         }
 
+        /* Dog Row */
         .dog-row {
             display: flex;
             justify-content: center;
@@ -71,6 +102,7 @@
             object-fit: cover;
             border: 4px solid rgba(255, 255, 255, 0.7);
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+            animation: fadeIn 2s ease-out;
         }
 
         audio {
@@ -90,6 +122,21 @@
 </head>
 <body>
 
+<!-- Floating Hearts Generated Here -->
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 3 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 9000);
+    }
+    setInterval(createHeart, 600);
+</script>
+
 <div class="container">
     <h1>For My Love ♡</h1>
 
@@ -100,17 +147,17 @@
         that makes you happy. No need to overthink, I'll be there for you till I die.<br><br>
         You said "don't ask will you be my girlfriend" So Nope, I'm not gonna ask that<br>
         I'll ask mam… <strong>Will you be the love of my life?</strong><br><br>
-        I'm in love with you like soooo madlyyy. This thing drives me crazy atp ahhh<br>
+        I'm in love with you like soooo madlyyy.<br>
         but yaaa I love you babyyyyyyy<br>
         Muah my sweet little cupcake ❤
     </p>
 
     <h2>Cutiepie things you love ♡</h2>
     <div class="dog-row">
-        <img src="dog1.jpeg" alt="">
-        <img src="dog2.jpeg" alt="">
-        <img src="dog3.jpeg" alt="">
-        <img src="dog4.jpeg" alt="">
+        <img src="dog1.jpeg">
+        <img src="dog2.jpeg">
+        <img src="dog3.jpeg">
+        <img src="dog4.jpeg">
     </div>
 
     <h2>Favourite Song ♪♡</h2>
