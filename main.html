@@ -6,159 +6,298 @@
 <title>For My Love ♡</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:Poppins,Arial,sans-serif;background:url('beach.jpeg') no-repeat center center fixed;background-size:cover;color:#fff;}
-  .overlay{background:rgba(0,0,0,0.35);max-width:940px;margin:28px auto;border-radius:28px;padding:36px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 12px 40px rgba(0,0,0,0.6);}
-  h1{font-size:44px;color:#ffd6f2;text-shadow:0 0 18px rgba(255,120,200,0.25);text-align:center;margin-bottom:12px}
-  p.lead{font-size:18px;line-height:1.8;color:#e7f3ff;margin:18px auto;max-width:850px;text-align:center}
-  .section-title{font-size:32px;margin-top:26px;margin-bottom:12px;color:#ffc8ea;text-shadow:0 0 12px rgba(255,100,180,0.15);text-align:center}
-  .dog-row{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:22px 0 6px}
-  .dog-row img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.75);box-shadow:0 6px 28px rgba(255,150,210,0.12);}
+  html,body{
+    height:100%;
+    font-family:Poppins,Arial,sans-serif;
+    background:url('beachbg.jpg') no-repeat center center fixed;
+    background-size:cover;
+    color:#fff;
+  }
+  .overlay{
+    background:rgba(0,0,0,0.35);
+    max-width:940px;
+    margin:28px auto;
+    border-radius:28px;
+    padding:36px;
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  }
+  h1{
+    font-size:44px;
+    color:#ffd6f2;
+    text-shadow:0 0 18px rgba(255,120,200,0.25);
+    text-align:center;
+    margin-bottom:12px
+  }
+  p.lead{
+    font-size:18px;
+    line-height:1.8;
+    color:#e7f3ff;
+    margin:18px auto;
+    max-width:850px;
+    text-align:center
+  }
+  .section-title{
+    font-size:32px;
+    margin-top:26px;
+    margin-bottom:12px;
+    color:#ffc8ea;
+    text-shadow:0 0 12px rgba(255,100,180,0.15);
+    text-align:center
+  }
+  .dog-row{
+    display:flex;
+    gap:22px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:22px 0 6px
+  }
+  .dog-row img{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid rgba(255,255,255,0.75);
+    box-shadow:0 6px 28px rgba(255,150,210,0.12);
+  }
 
-  /* hearts (background floating, subtle) */
-  .heart{position:fixed;bottom:-30px;color:#ffc0dd;font-size:20px;opacity:0.85;pointer-events:none;animation:floatUp linear infinite}
-  @keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(-120vh) rotate(360deg);opacity:0}}
+  /* hearts */
+  .heart{
+    position:fixed;
+    bottom:-30px;
+    color:#ffc0dd;
+    font-size:20px;
+    opacity:0.85;
+    pointer-events:none;
+    animation:floatUp linear infinite
+  }
+  @keyframes floatUp{
+    0%{transform:translateY(0) rotate(0);opacity:1}
+    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
+  }
 
   /* Stamp + Cookie area */
-  .play-area{display:flex;gap:20px;align-items:center;justify-content:center;flex-wrap:wrap;margin:28px 0}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);min-width:220px;max-width:320px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
-  .card h3{font-size:18px;color:#ffdff1;margin-bottom:10px}
+  .play-area{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:28px 0
+  }
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    padding:18px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,0.06);
+    min-width:220px;
+    max-width:320px;
+    text-align:center;
+    box-shadow:0 8px 30px rgba(0,0,0,0.45)
+  }
+  .card h3{
+    font-size:18px;
+    color:#ffdff1;
+    margin-bottom:10px
+  }
+
   /* passport stamp */
   .passport-wrap{position:relative;padding:10px}
-  .passport-btn{background:#ff69c8;border:none;color:white;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 8px 22px rgba(255,80,170,0.18)}
-  .stamp-area{height:110px;display:flex;align-items:center;justify-content:center;margin-top:12px;position:relative}
-  .stamp-plate{width:120px;height:120px;border-radius:999px;border:6px dashed rgba(255,170,210,0.5);display:flex;align-items:center;justify-content:center;opacity:0.0;transform:scale(0.6) rotate(-10deg);transition:all .6s cubic-bezier(.2,.9,.25,1)}
-  .stamp-plate.stamped{opacity:1;transform:scale(1) rotate(0);filter:drop-shadow(0 6px 18px rgba(255,80,170,0.25))}
-  .stamp-text{font-size:14px;color:#fff;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-  /* imprint (faint overlay on container) */
-  .imprint{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;mix-blend-mode:overlay;color:rgba(255,160,210,0.12);font-weight:800;font-size:120px;transition:opacity .5s}
+  .passport-btn{
+    background:#ff69c8;
+    border:none;
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(255,80,170,0.18)
+  }
+  .stamp-area{
+    height:110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:12px;
+    position:relative
+  }
+  .stamp-plate{
+    width:120px;
+    height:120px;
+    border-radius:999px;
+    border:6px dashed rgba(255,170,210,0.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transform:scale(0.6) rotate(-10deg);
+    transition:all .6s cubic-bezier(.2,.9,.25,1)
+  }
+  .stamp-plate.stamped{
+    opacity:1;
+    transform:scale(1) rotate(0);
+    filter:drop-shadow(0 6px 18px rgba(255,80,170,0.25))
+  }
+  .stamp-text{
+    font-size:14px;
+    color:#fff;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase
+  }
+  .imprint{
+    position:absolute;
+    left:50%;
+    top:30%;
+    transform:translate(-50%,-50%);
+    opacity:0;
+    mix-blend-mode:overlay;
+    color:rgba(255,160,210,0.12);
+    font-weight:800;
+    font-size:120px;
+    transition:opacity .5s
+  }
   .imprint.show{opacity:1}
 
   /* fortune cookie */
-  .cookie-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}
-  .cookie{width:120px;height:80px;background:linear-gradient(180deg,#f0c27b,#d58a3b);border-radius:60px 60px 40px 40px;position:relative;box-shadow:0 8px 26px rgba(0,0,0,0.35);cursor:pointer;transform-origin:center;transition:transform .4s}
-  .cookie::before{content:'';position:absolute;left:50%;top:18px;transform:translateX(-50%);width:70px;height:42px;background:#f7e1b0;border-radius:40px 40px 20px 20px}
-  /* little shine */
-  .cookie::after{content:'';position:absolute;right:18px;top:10px;width:12px;height:6px;background:rgba(255,255,255,0.65);border-radius:6px;transform:rotate(-20deg)}
-  .cookie.cracked{transform:scale(.98) rotate(-6deg)}
-  .cookie.cracked .left,.cookie.cracked .right{transform-origin:center;transition:transform .6s}
-  .cookie .left,.cookie .right{position:absolute;top:0;width:60px;height:80px;background:transparent;border-radius:inherit;overflow:hidden}
-  .cookie .left img,.cookie .right img{position:absolute;left:0;top:0;width:120px;height:80px;object-fit:cover}
-  .cookie .left{left:0}
-  .cookie .right{right:0}
-  .left.open{transform:translateX(-40px) rotate(-20deg)}
-  .right.open{transform:translateX(40px) rotate(18deg)}
-
-  .fortune-msg{min-height:58px;padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));font-size:15px;color:#ffdff1;max-width:260px}
-
-  /* responsive tweaks */
-  @media(max-width:560px){
-    h1{font-size:32px}
-    p.lead{font-size:16px;line-height:1.7}
-    .dog-row img{width:94px;height:94px}
-    .stamp-plate{width:100px;height:100px}
+  .cookie-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .cookie{
+    width:120px;
+    height:80px;
+    background:linear-gradient(180deg,#f0c27b,#d58a3b);
+    border-radius:60px 60px 40px 40px;
+    position:relative;
+    box-shadow:0 8px 26px rgba(0,0,0,0.35);
+    cursor:pointer;
+    transform-origin:center;
+    transition:transform .4s
+  }
+  .cookie::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:18px;
+    transform:translateX(-50%);
+    width:70px;
+    height:42px;
+    background:#f7e1b0;
+    border-radius:40px 40px 20px 20px
+  }
+  .fortune-msg{
+    min-height:58px;
+    padding:8px 10px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.05);
+    font-size:15px;
+    color:#ffdff1;
+    max-width:260px;
+    text-align:center;
   }
 </style>
 </head>
 <body>
 
-<!-- floating hearts generator -->
+<!-- floating hearts -->
 <script>
-  function addHeart(){const d=document.createElement('div');d.className='heart';d.style.left=(5+Math.random()*90)+'vw';d.style.fontSize=(14+Math.random()*18)+'px';d.style.animationDuration=(5+Math.random()*6)+'s';d.innerText='❤';document.body.appendChild(d);setTimeout(()=>d.remove(),10000)}
+  function addHeart(){
+    const d=document.createElement('div');
+    d.className='heart';
+    d.style.left=(5+Math.random()*90)+'vw';
+    d.style.fontSize=(14+Math.random()*18)+'px';
+    d.style.animationDuration=(5+Math.random()*6)+'s';
+    d.innerText='❤';
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),10000);
+  }
   setInterval(addHeart,650);
 </script>
 
 <div class="overlay">
-  <div class="container">
+  <h1>For My Sweet Little Cupcake ♡</h1>
 
-    <h1>For My Sweet Little Cupcake ♡</h1>
+  <!-- FULL PARAGRAPH FIXED -->
+  <p class="lead">
+    Hey babe, I just wanna confess something which I kept for months, I'm in love with you babe,<br>
+    You always make my days brighter and make my heart beat a little faster. So I made this small place
+    on the internet just for you babe. Idk if this is unique or something but I felt like doing something
+    that makes you happy. No need to overthink, I'll be there for you till I die.<br><br>
 
-    <p class="lead">
-      Hey babe, I just wanna confess something which I kept for months, I'm in love with you babe,<br>
-      You always make my days brighter and make my heart beat a little faster. So I made this small place
-      on the internet just for you babe. Idk if this is unique or something but I felt like doing something
-      that makes you happy. No need to overthink, I'll be there for you till I die.
-    </p>
+    You said "don't ask will you be my girlfriend" So Nope, I'm not gonna ask that<br>
+    I'll ask mam… <strong>Will you be the love of my life?</strong><br><br>
 
-    <div class="section-title">Cutiepie Things You Love ♡</div>
-    <div class="dog-row">
-      <img src="dog1.jpeg" alt="">
-      <img src="dog2.jpeg" alt="">
-      <img src="dog3.jpeg" alt="">
-      <img src="dog4.jpeg" alt="">
-    </div>
+    I'm in love with you like soooo madlyyy. This thing drives me crazy atp ahhh<br>
+    but yaaa I love you babyyyyyyy<br>
+    Muah my sweet little cupcake ❤
+  </p>
 
-    <!-- NEW: Stamp + Cookie area -->
-    <div class="play-area">
+  <div class="section-title">Cutiepie Things You Love ♡</div>
+  <div class="dog-row">
+    <img src="dog1.jpeg">
+    <img src="dog2.jpeg">
+    <img src="dog3.jpeg">
+    <img src="dog4.jpeg">
+  </div>
 
-      <!-- Passport Stamp -->
-      <div class="card passport-wrap" id="passportCard">
-        <h3>Entry to My Heart</h3>
-        <button class="passport-btn" id="stampBtn">Stamp My Love ❤️</button>
+  <!-- Stamp + Cookie -->
+  <div class="play-area">
 
-        <div class="stamp-area">
-          <div class="stamp-plate" id="stampPlate">
-            <div class="stamp-text">APPROVED<br>BY LOVE</div>
-          </div>
-        </div>
-        <div class="imprint" id="imprint">❤</div>
-      </div>
-
-      <!-- Fortune Cookie -->
-      <div class="card cookie-wrap">
-        <h3>Tap the Fortune Cookie</h3>
-        <div class="cookie-wrap">
-          <div class="cookie" id="cookie">
-            <div class="left"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='80'><rect width='120' height='80' fill='%23f0c27b'/></svg>" alt=""></div>
-            <div class="right"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='80'><rect width='120' height='80' fill='%23d58a3b'/></svg>" alt=""></div>
-          </div>
-
-          <div class="fortune-msg" id="fortuneMsg">Tap cookie to reveal a little message...</div>
+    <!-- stamp -->
+    <div class="card passport-wrap">
+      <h3>Entry to My Heart</h3>
+      <button class="passport-btn" id="stampBtn">Stamp My Love ❤️</button>
+      <div class="stamp-area">
+        <div class="stamp-plate" id="stampPlate">
+          <div class="stamp-text">APPROVED<br>BY LOVE</div>
         </div>
       </div>
-
+      <div class="imprint" id="imprint">❤</div>
     </div>
 
-    <!-- song + audio as before -->
-    <div class="section-title">Favourite Songs 🎵</div>
-    <p style="margin-top:6px;color:#ffdff1">Agar Tum Saath Ho – Arijit Singh</p>
-    <audio controls preload="auto" style="width:92%;max-width:720px;margin:18px auto 26px;display:block;">
-      <source src="agar.mp3" type="audio/mpeg">
-    </audio>
-
-    <p style="color:#ffdff1;font-size:15px;margin-bottom:8px">I'm sorry baby, I only know this one song you mentioned. Else I would have added a whole playlist for you. I'm sorry cutieeee ❤</p>
+    <!-- cookie -->
+    <div class="card cookie-wrap">
+      <h3>Tap the Fortune Cookie</h3>
+      <div class="cookie" id="cookie"></div>
+      <div class="fortune-msg" id="fortuneMsg">Tap cookie to reveal a little message...</div>
+    </div>
 
   </div>
+
+  <div class="section-title">Favourite Songs 🎵</div>
+  <p style="color:#ffdff1;font-size:17px;">Agar Tum Saath Ho – Arijit Singh</p>
+
+  <audio controls preload="auto" style="width:92%;max-width:720px;margin:12px auto 26px;display:block;">
+    <source src="agar.mp3" type="audio/mpeg">
+  </audio>
+
+  <p style="color:#ffdff1;font-size:15px;margin-bottom:8px;text-align:center;">
+    I'm sorry baby, I only know this one song you mentioned. Else I would have added a whole playlist for you.  
+    I'm sorry cutieeee ❤
+  </p>
+
 </div>
 
 <script>
-  /* Passport Stamp logic */
-  const stampBtn = document.getElementById('stampBtn');
-  const stampPlate = document.getElementById('stampPlate');
-  const imprint = document.getElementById('imprint');
+  /* STAMP */
+  const stampBtn=document.getElementById('stampBtn');
+  const stampPlate=document.getElementById('stampPlate');
+  const imprint=document.getElementById('imprint');
+  let stamped=false;
 
-  let stamped = false;
-  stampBtn.addEventListener('click', () => {
-    if (stamped) return; // single stamp
-    stamped = true;
+  stampBtn.onclick=()=>{
+    if(stamped) return;
+    stamped=true;
     stampPlate.classList.add('stamped');
-    // show faint imprint behind container for a few seconds
     imprint.classList.add('show');
     setTimeout(()=>imprint.classList.remove('show'),4000);
-    // small bounce
-    stampPlate.animate([{transform:'scale(0.9)'},{transform:'scale(1.05)'},{transform:'scale(1)'}],{duration:700,easing:'ease-out'});
-    // play a small stamp sound? (optional) - uncomment if you add stamp.mp3
-    // new Audio('stamp.mp3').play();
-    stampBtn.textContent = 'Stamped ✔️';
-    stampBtn.style.background = 'linear-gradient(90deg,#ff7ac4,#ff4ecf)';
-  });
+    stampBtn.textContent='Stamped ✔️';
+    stampBtn.style.background='linear-gradient(90deg,#ff7ac4,#ff4ecf)';
+  };
 
-  /* Fortune cookie logic */
-  const cookie = document.getElementById('cookie');
-  const left = cookie.querySelector('.left');
-  const right = cookie.querySelector('.right');
-  const fortuneMsg = document.getElementById('fortuneMsg');
+  /* FORTUNE COOKIE */
+  const cookie=document.getElementById('cookie');
+  const fortuneMsg=document.getElementById('fortuneMsg');
 
-  const fortunes = [
+  const fortunes=[
     "You're my forever favorite surprise.",
     "I want endless coffees with you and lazy Sundays.",
     "We will travel and get lost together—happily.",
@@ -166,29 +305,18 @@
     "A future with you is my favorite plan."
   ];
 
-  let cracked = false;
-  cookie.addEventListener('click', () => {
-    if (cracked) {
-      // flip through another message
-      const choice = fortunes[Math.floor(Math.random()*fortunes.length)];
-      fortuneMsg.textContent = choice;
-      fortuneMsg.animate([{opacity:.6},{opacity:1}],{duration:400});
-      return;
+  let cracked=false;
+  cookie.onclick=()=>{
+    if(!cracked){
+      cracked=true;
+      const f=fortunes[Math.floor(Math.random()*fortunes.length)];
+      fortuneMsg.textContent=f;
+      fortuneMsg.style.opacity=1;
+    } else {
+      const f=fortunes[Math.floor(Math.random()*fortunes.length)];
+      fortuneMsg.textContent=f;
     }
-    cracked = true;
-    cookie.classList.add('cracked');
-    // open halves
-    left.classList.add('open');
-    right.classList.add('open');
-
-    // reveal a random fortune after animation
-    setTimeout(()=> {
-      const choice = fortunes[Math.floor(Math.random()*fortunes.length)];
-      fortuneMsg.textContent = choice;
-      fortuneMsg.style.transform = 'translateY(-4px)';
-      fortuneMsg.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}],{duration:420,easing:'ease-out'});
-    },420);
-  });
+  };
 </script>
 
 </body>
