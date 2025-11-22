@@ -5,58 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love 💕</title>
 
+<!-- Google Font (optional but looks nicer) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-    body {
+    body, html {
         margin: 0;
         padding: 0;
-        background: url('beach.jpeg') no-repeat center center fixed;
-        background-size: cover;
+        height: 100%;
         font-family: "Poppins", sans-serif;
         color: white;
         text-align: center;
     }
 
-    .container {
-        background: rgba(0, 0, 0, 0.45);
-        padding: 30px;
-        margin: 30px;
-        border-radius: 20px;
-        backdrop-filter: blur(3px);
+    body {
+        /* Background image from your GitHub repo */
+        background: url('beach.jpeg') no-repeat center center fixed;
+        background-size: cover;
+        /* Fallback color while image loads - a nice blue beach vibe */
+        background-color: #1e90ff;
     }
 
-    h1, h2 {
-        font-family: "Brush Script MT", cursive;
-        font-size: 35px;
-        margin-bottom: 10px;
-        color: pink;
-        text-shadow: 0 0 10px rgba(255, 180, 220, 0.9);
+    .container {
+        background: rgba(0, 0, 0, 0.48);        /* slightly darker for better text readability */
+        padding: 40px 20px;
+        margin: 40px auto;
+        max-width: 90%;
+        border-radius: 25px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+        font-family: "Brush Script MT", cursive, serif;
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: #ffb6c1;
+        text-shadow: 0 0 15px rgba(255, 182, 193, 0.9);
+    }
+
+    h2 {
+        font-family: "Brush Script MT", cursive, serif;
+        font-size: 38px;
+        color: #ff69b4;
+        margin: 30px 0 15px;
     }
 
     p {
-        font-size: 15px;
-        line-height: 1.6;
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 20px;
     }
 
     .dog-row {
         display: flex;
         justify-content: center;
-        gap: 10px;
-        margin-top: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 25px 0;
     }
 
     .dog-row img {
-        width: 65px;
-        height: 65px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
-        border: 2px solid white;
-        box-shadow: 0 0 10px rgba(255,255,255,0.7);
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 0 15px rgba(255,255,255,0.8);
     }
 
     audio {
         width: 90%;
-        margin-top: 10px;
+        max-width: 500px;
+        margin: 20px auto;
+        display: block;
     }
 
+    .small-text {
+        font-size: 15px;
+        color: #ffd5e8;
+        margin-top: 30px;
+    }
 </style>
 </head>
 
@@ -67,38 +96,37 @@
     <h1>For My Love 💕</h1>
 
     <p>
-        Hey babe, I just wanna confess something which I kept it for months, I'm in love with you babe,
-        You always makes my days brighter and make my heart a little faster. So I made this small place
-        on internet just for you babe. Idk this is unique or something but I felt like doing something
-        which makes you happy. no need to overthink or something I'll be there for you till I die.
-        You said don't ask will you be my girlfriend So Nop I'm not gonna ask that I'll ask mam ?
-        Will you be the love of my life ?
-        Im in love with you like soo madlyy. this thing drives me crazy atp ahhh
-        but yaaa I love you babyyyyyyy
-        Muah my sweet little cupcake💗
+        Hey babe, I just wanna confess something which I kept for months, I'm in love with you babe,<br>
+        You always make my days brighter and make my heart beat a little faster. So I made this small place
+        on the internet just for you babe. Idk if this is unique or something but I felt like doing something
+        that makes you happy. No need to overthink, I'll be there for you till I die.<br><br>
+        You said "don't ask will you be my girlfriend" So Nope, I'm not gonna ask that 😜<br>
+        I'll ask mam… Will you be the love of my life? 💍<br>
+        I'm in love with you like soooo madlyyy. This thing drives me crazy atp ahhh<br>
+        but yaaa I love you babyyyyyyy<br>
+        Muah my sweet little cupcake 💗
     </p>
 
-    <h2>Cutiepie things you love 💞</h2>
+    <h2>Cutiepie things you love 🐶💞</h2>
 
     <div class="dog-row">
-        <img src="dog1.jpeg">
-        <img src="dog2.jpeg">
-        <img src="dog3.jpeg">
-        <img src="dog4.jpeg">
+        <img src="dog1.jpeg" alt="cute dog 1">
+        <img src="dog2.jpeg" alt="cute dog 2">
+        <img src="dog3.jpeg" alt="cute dog 3">
+        <img src="dog4.jpeg" alt="cute dog 4">
     </div>
 
-    <h2>Favourite Songs 🎶💞</h2>
-
+    <h2>Favourite Song 🎶💕</h2>
     <p>Agar Tum Saath Ho – Arijit Singh</p>
 
-    <audio controls>
+    <audio controls preload="auto">
         <source src="agar.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 
-    <p style="margin-top: 20px; font-size: 14px; color: #ffd5e8;">
-        I'm sorry baby Idk the songs which you hear.  
-        All ik you like this song you mentioned this one only in our entire conversation.  
-        Else I would have added more.  
+    <p class="small-text">
+        I'm sorry baby, I only know this one song you mentioned in our entire conversation 😅<br>
+        Else I would have added a whole playlist for you.<br>
         I'm sorry cutieeee 💗
     </p>
 
