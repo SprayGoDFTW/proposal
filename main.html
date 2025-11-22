@@ -3,69 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cutiepie Things 💕</title>
+    <title>For My Cupcake</title>
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: black;
+            background: url("beach.jpeg") no-repeat center center/cover;
+            background-attachment: fixed;
+            font-family: "Arial", sans-serif;
             color: white;
-            font-family: Arial, sans-serif;
             text-align: center;
+            overflow-x: hidden;
+        }
+
+        .bg-overlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.45);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            backdrop-filter: blur(2px);
         }
 
         h1 {
             font-size: 40px;
-            margin-top: 20px;
-            color: #ff9ae6;
-            text-shadow: 0 0 15px #ff5edb;
+            margin-top: 40px;
+            text-shadow: 0 0 20px #ff73df;
+            animation: fadeIn 2s ease-in-out;
         }
 
         p {
-            font-size: 22px;
-            margin: 25px;
-            line-height: 1.5;
+            width: 85%;
+            max-width: 700px;
+            margin: 25px auto;
+            font-size: 20px;
+            line-height: 1.6;
+            text-shadow: 0 0 10px black;
+            animation: fadeIn 3s ease-in-out;
         }
 
-        .container {
-            margin-top: 20px;
-            display: grid;
-            gap: 25px;
-            grid-template-columns: repeat(2, 150px);
+        .dogs {
+            display: flex;
             justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
 
-        .box {
-            width: 150px;
-            height: 150px;
-            background: #111;
-            border-radius: 20px;
-            box-shadow: 0 0 20px #ff71c6;
-            overflow: hidden;
-        }
-
-        .box img {
-            width: 100%;
-            height: 100%;
+        .dogs img {
+            width: 180px;
+            height: 180px;
             object-fit: cover;
+            border-radius: 20px;
+            transition: transform .3s, box-shadow .3s;
+            box-shadow: 0 0 15px #ff72e6;
+        }
+
+        .dogs img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #ff2fd1;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            color: pink;
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        button {
+            margin-top: 20px;
+            background: #ff4ed6;
+            border: none;
+            padding: 12px 22px;
+            color: white;
+            font-size: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff4ed6;
+        }
+        button:hover {
+            background: #ff1fc7;
         }
     </style>
 </head>
 <body>
 
-    <p>I’m in love with you so madly, it drives me crazy.<br>
-    I love you babyyy. Muah my sweet little cupcake.</p>
+<div class="bg-overlay"></div>
 
-    <h1>Cutiepie Things You Love 💕</h1>
+<h1>For My Sweet Little Cupcake 💕</h1>
 
-    <div class="container">
-        <div class="box"><img src="dog1.jpeg"></div>
-        <div class="box"><img src="dog2.jpeg"></div>
-        <div class="box"><img src="dog3.jpeg"></div>
-        <div class="box"><img src="dog4.jpeg"></div>
-    </div>
+<p>
+Hey babe, I just wanna confess something I’ve been holding inside for months… I’m in love with you, babe. 
+You always make my days brighter and make my heart beat a little faster. 
+So I made this small place on the internet just for you, babe. 
+Idk if it’s unique or anything, but I just wanted to do something that would make you happy. 
+No need to overthink anything — I’ll be there for you till I die.<br><br>
+You said not to ask “will you be my girlfriend?” so nope, I’m not gonna ask that.<br>
+I’ll ask… ma’am?<br>
+Will you be the love of my life?<br><br>
+I’m in love with you sooo madly, it drives me crazy at this point.<br>
+But yeah… I love you babyyyyyyy. Muah, my sweet little cupcake. 💕
+</p>
+
+<div class="dogs">
+    <img src="dog1.jpeg">
+    <img src="dog2.jpeg">
+    <img src="dog3.jpeg">
+    <img src="dog4.jpeg">
+</div>
+
+<button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+
+<audio id="music" loop>
+    <source src="agar.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    // MUSIC BUTTON
+    function toggleMusic() {
+        let music = document.getElementById("music");
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+
+    // FLOATING HEARTS
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 700);
+</script>
 
 </body>
 </html>
